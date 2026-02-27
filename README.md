@@ -1,85 +1,130 @@
 # GGF Governance Simulator
 
-An open-source simulator modelling governance systems as feedback control systems, demonstrating how latency and signal fidelity determine the structural stability limits of institutional architectures.
+A series of Python simulations accompanying the **Governance as Engineering** whitepaper series. Each version applies formal tools from control theory, cybernetics, and information theory to a different structural problem in governance design.
 
-Companion code to the whitepaper **[Governance Stability Simulator: A Control-Theoretic Model of Institutional Adaptation](https://www.bjornkennethholmstrom.org/whitepapers/governance-stability-simulator)**.
+All simulations are self-contained, dependency-light, and fully reproducible from a fixed random seed.
 
-## The core argument
+---
 
-Governance systems are feedback systems. They observe the state of the world, process that information through institutions, and produce interventions intended to correct deviations from desired conditions. Like all feedback systems, their performance is determined by measurable structural properties — primarily latency (the delay between a crisis and a response) and signal fidelity (the accuracy of information reaching decision-makers).
+## The whitepaper series
 
-These properties place hard mathematical ceilings on what any governance architecture can achieve. The simulator makes this concrete and visual.
-
-## Simulations
-
-### v2 — Single-node scalar model (`ggf-simulator-v2.py`)
-
-Demonstrates the latency-gain ceiling and the observability gap using a single scalar state variable. Shows that:
-
-- High latency forces low controller gain (structural, not political)
-- Low signal fidelity produces a corrupted picture of reality that the controller acts on
-- The gap between what Architecture A *thinks* is happening and what is *actually* happening is the observability failure made visible
-
-![v2 output](outputs/ggf-simulator-v2.png)
-
-### v3 — Ten-node vector model (`ggf-simulator-v3.py`)
-
-Extends to a network of ten coupled nodes and introduces a localized shock to two nodes. Demonstrates the **averaging problem**: a centralized controller aggregating local signals into a national mean destroys spatial information, simultaneously under-serving crisis nodes and disrupting healthy ones. Shows that subsidiarity is an engineering requirement, not a political preference.
-
-![v3 output](outputs/ggf-simulator-v3.png)
-
-### v3-unadjusted — Instability demonstration (`ggf-simulator-v3-unadjusted.py`)
-
-The original v3 with `K_B = 0.85`, which exceeds the stability ceiling for `tau_B = 2`. Produces oscillatory instability in Architecture B. Included deliberately: it demonstrates that distributed systems have their own stability constraints, and that local autonomy without coordination protocols generates its own failure mode.
-
-## Architecture comparison
-
-| Parameter | Architecture A (centralized) | Architecture B (fractal/distributed) |
+| Paper | Title | Core result |
 |---|---|---|
-| Latency `τ` | 12 | 2 |
-| Observation noise `σ` | 6.0 | 0.5 |
-| Controller gain `K` | 0.30 | 0.45 |
-| Response topology | Uniform broadcast from national mean | Per-node local response |
+| I | [Governance Stability Simulator](https://bjornkennethholmstrom.org/whitepapers/governance-stability-simulator) | High latency and low signal fidelity place hard mathematical ceilings on governance stability, regardless of institutional quality |
+| II | [Fractality as Stability](https://bjornkennethholmstrom.org/whitepapers/fractality-as-stability) | No single-scale controller can stabilize a multi-frequency disturbance environment; nested fractal architectures are the stability-optimal solution |
+| III | [The Observability-Democracy Connection](https://bjornkennethholmstrom.org/whitepapers/observability-democracy-connection) | Representation chains with 3+ layers are constitutionally unobservable; citizen preferences cannot survive to the policy layer regardless of institutional quality |
+| IV | [Requisite Variety and the Commons](https://bjornkennethholmstrom.org/whitepapers/requisite-variety-and-the-commons) | Commons governance is a feedback loop integrity problem; observation dimensionality — not institutional quality — determines outcomes; state management is worse than open access |
 
-The gain values are not arbitrary choices — they reflect the stability ceiling imposed by each architecture's latency. Architecture A *cannot* use a higher gain without inducing instability, regardless of resources or political will.
+---
 
-## Running the simulations
+## Simulators
 
-Requires Python 3.8+ with NumPy and Matplotlib:
+### v1 — Conceptual sketch
+Exploratory prototype. Not documented in the whitepapers.
+
+### v2 — Single-node scalar feedback (Paper I)
+Introduces the core feedback loop model: a single governance node with configurable latency and signal fidelity, subject to an external disturbance. Demonstrates the stability ceiling imposed by high latency.
 
 ```bash
-git clone https://github.com/BjornKennethHolmstrom/ggf-governance-simulator
-cd ggf-governance-simulator
-pip install numpy matplotlib
+python ggf-simulator-v2.py
+```
+
+### v3 — Ten-node vector model with localized shock (Paper I)
+Extends v2 to a ten-node spatial system. A localized shock at node 3 is visible to the local controller but invisible to the central controller, which sees only the aggregate signal. Demonstrates the averaging problem — the formal basis for subsidiarity.
+
+```bash
 python ggf-simulator-v3.py
 ```
 
-Both simulations are seeded for reproducibility (`numpy.random.default_rng(seed=7)`). Running with default parameters reproduces the figures in the whitepaper exactly.
+### v3-unadjusted — Instability demonstration (Paper I)
+Identical to v3 but with gain set above the stability ceiling. Demonstrates the oscillatory failure mode predicted by the gain margin analysis.
 
-## Modifying the parameters
-
-Architectural parameters are defined at the top of each script. Varying `tau_A`, `sigma_A`, `K_A` and their Architecture B counterparts changes the quantitative outputs while preserving the qualitative structural relationships — provided gain values remain below the stability ceiling for their respective latencies.
-
-The stability ceiling approximation is:
-
-```
-K_max ≈ 1 / (τ · |A|)
+```bash
+python ggf-simulator-v3-unadjusted.py
 ```
 
-For `tau_B = 2` and `A = 0.95`, this gives a ceiling of approximately 0.53. `K_B = 0.45` is the working value; `ggf-simulator-v3-unadjusted.py` shows what happens at `K_B = 0.85`.
+### v4 — Multi-scale disturbance, three architectures (Paper II)
+Models a governance system facing simultaneous fast, medium, and slow disturbances. Compares three architectures: single global controller, single local controller, and fractal nested controller. Demonstrates the frequency gap theorem — no single-scale controller covers all disturbance bands.
 
-## Intellectual lineage
+```bash
+python ggf-simulator-v4.py
+```
 
-The mathematics here is not new. Control theory, cybernetics, and the Law of Requisite Variety were developed in the mid-twentieth century by Norbert Wiener, Ross Ashby, Stafford Beer, and others. This simulator applies those established tools to governance architecture comparison.
+### v5 — Representation chain observability, four architectures (Paper III)
+Shifts domain from stability to preference transmission. Models 60 citizen groups holding preferences across 4 dimensions, transmitted through representation chains of 1–5 layers. Computes SNR at the policy layer. Demonstrates the constitutional unobservability threshold: SNR < 1 at ≥3 layers regardless of institutional quality.
 
-This code was developed through an iterative human-AI collaborative process. See Appendix C of the whitepaper for a full account of the methodology and the primary literature the framework draws from.
+```bash
+python ggf-simulator-v5.py
+```
+
+### v6 — Commons governance and requisite variety, five architectures (Paper IV)
+Models a 12-patch renewable resource governed by five architectures over 30 years (360 months), subject to fast stochastic shocks, seasonal cycles, and a slow decadal carrying-capacity decline. Computes mean stock, collapse risk, and extraction inequality (Gini) per architecture.
+
+Key finding: state management (Architecture B, annual survey) achieves 98.9% collapse risk — worse than open access (A, 93.6%) — because high observation latency combined with single-dimension aggregation produces destabilising interventions. Community commons (D, 3 observation dimensions) and bioregional/indigenous governance (E, 6 dimensions including the slow ecological signal) are the only architectures that avoid near-certain collapse.
+
+```bash
+python ggf-simulator-v6.py
+```
+
+---
+
+## Simulation outputs
+
+| File | Description |
+|---|---|
+| `outputs/ggf-simulator-v2.png` | Stability ceiling: latency vs. disturbance response |
+| `outputs/ggf-simulator-v3.png` | Averaging problem: local shock invisible to central controller |
+| `outputs/ggf-simulator-v4.png` | Frequency gap: three architectures across three disturbance bands |
+| `outputs/ggf-simulator-v5.png` | Observability: SNR collapse and preference tracking across four architectures |
+| `outputs/ggf-simulator-v6.png` | Commons: resource stock, requisite variety, equity, and slow variable tracking |
+
+---
+
+## Results summary
+
+### v5 — Representation chain observability
+
+| Architecture | Layers | Mean tracking error | Variance survived | SNR |
+|---|---|---|---|---|
+| A — Deep democracy | 5 | 0.160 | 0% | 0.002 |
+| B — Representative | 3 | 0.077 | 0% | 0.048 |
+| C — Semi-direct | 2 | 0.022 | 79% | 0.254 |
+| D — Direct/participatory | 1 | 0.008 | 100% | 1.780 |
+
+Constitutional unobservability threshold: SNR < 1, crossed at approximately 2–3 layers.
+
+### v6 — Commons governance and requisite variety
+
+| Architecture | Mean stock | Collapse risk | Gini | Obs dims |
+|---|---|---|---|---|
+| A — Open access | 4.2% | 93.6% | 0.018 | 1 |
+| B — State management | 3.7% | 98.9% | 0.058 | 1 |
+| C — Market mechanism | 9.6% | 86.4% | 0.096 | 1 |
+| D — Community commons | 27.2% | 30.3% | 0.085 | 3 |
+| E — Bioregional / indigenous | 31.1% | 3.6% | 0.032 | 6 |
+
+Collapse threshold: stock below 20% of carrying capacity. Simulation: 30 years, 12 patches, 20 user groups, seed 42.
+
+---
+
+## Requirements
+
+```bash
+pip install numpy matplotlib
+python ggf-simulator-v6.py   # or any other version
+```
+
+No other dependencies. All versions tested on Python 3.10+.
+
+---
 
 ## License
 
-MIT
+MIT. Contributions, extensions, and empirical applications welcome via GitHub issues and pull requests.
 
-## Related work
+---
 
-- [The Architecture of Stability](https://www.bjornkennethholmstrom.org/whitepapers/architecture-of-stability) — the broader systems-theoretic framework this simulator operationalizes
-- [Global Subsidiarity Index](https://www.svensksubsidiaritet.se/ramverk/gsi/) — a measurement framework for the structural variable this simulator demonstrates
-- [Global Governance Frameworks](https://www.globalgovernanceframeworks.org) — the wider project
+## Related
+
+- [Global Governance Frameworks](https://globalgovernanceframeworks.org) — the broader governance framework project these simulations support
+- [bjornkennethholmstrom.org/whitepapers](https://bjornkennethholmstrom.org/whitepapers) — full whitepaper series with mathematical appendices
