@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ggf-simulator-v8-bypass-trap.py
+gae-simulator-v8-bypass-trap.py
 ================================
 Appendix B — Bypass-Trap Dynamics
 Paper IX: The Political Economy of Requisite Governance

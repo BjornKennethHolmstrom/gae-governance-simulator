@@ -1,6 +1,6 @@
 """
-GGF Governance Simulator v6 — Commons Governance and Requisite Variety
-=======================================================================
+Governance as Engineering Governance Simulator v6 — Commons Governance and Requisite Variety
+============================================================================================
 Demonstrates that commons management is fundamentally a feedback loop
 integrity problem. The tragedy of the commons is not a moral failure
 but an architectural one: individual extraction decisions are made
@@ -520,12 +520,12 @@ print(f"Collapse threshold: {int(COLLAPSE*100)}% of carrying capacity")
 
 # ── Title ─────────────────────────────────────────────────────────────────────
 fig.suptitle(
-    'GGF Governance Simulator v6 — Commons Governance and Requisite Variety\n'
+    'Governance as Engineering Governance Simulator v6 — Commons Governance and Requisite Variety\n'
     'Feedback loop integrity and observation dimensionality determine commons outcomes\n'
     'All architectures face identical resources and disturbances; differences are structural',
     fontsize=10, y=1.01
 )
 
-plt.savefig('outputs/ggf-simulator-v6.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/gae-simulator-v6.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("\nSaved to ggf-simulator-v6.png")
+print("\nSaved to gae-simulator-v6.png")

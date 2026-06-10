@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ggf-simulator-v11-epistemic-monoculture.py
+gae-simulator-v11-epistemic-monoculture.py
 ============================================
 Sim D — Epistemic Monoculture Collapse
 Paper X: Requisite Observer Diversity

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ggf-simulator-v9-latency-asymmetry.py
+gae-simulator-v9-latency-asymmetry.py
 ========================================
 Sim B — Reform-Incumbent Latency Asymmetry
 Paper IX: The Political Economy of Requisite Governance

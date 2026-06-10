@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ggf-simulator-v12-consolidation-dynamics.py
+gae-simulator-v12-consolidation-dynamics.py
 =============================================
 Sim D2 — Consolidation Dynamics and the Monoculture Attractor
 Paper X: Requisite Observer Diversity — Part III §3.3 / Part VI extension

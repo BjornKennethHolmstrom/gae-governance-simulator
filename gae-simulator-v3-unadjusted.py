@@ -1,6 +1,6 @@
 """
-GGF Governance Simulator v3 — Multi-Node Subsidiarity Proof
-=============================================================
+Governance as Engineering Governance Simulator v3 — Multi-Node Subsidiarity Proof
+=================================================================================
 Extends v2 from a scalar state to a vector state over N coupled nodes,
 proving *where* the decision is made matters — not just how fast.
 
@@ -61,10 +61,7 @@ K_A      = 0.30   # gain ceiling imposed by latency (see v2 for derivation)
 # ── Architecture B: Fractal / Distributed ────────────────────────────────────
 tau_B    = 2      # latency: local BAZ reacts within days
 sigma_B  = 0.5    # noise: dual-currency makes local state legible
-K_B      = 0.45   # Higher than K_A is justified by lower latency, but the
-                  # stability ceiling still applies. Rule of thumb ~1/tau gives
-                  # ceiling ≈ 0.5; coupling tightens this further → 0.45 is safe.
-                  # Point: B's *latency* advantage dominates over marginal gain.
+K_B      = 0.85   # high gain safe because latency is small
 
 # ── Helper: nearest-neighbour coupling step ────────────────────────────────────
 def couple(x):
@@ -265,14 +262,14 @@ ax_ctrl.legend(fontsize=7)
 ax_ctrl.grid(True, alpha=0.2)
 
 fig.suptitle(
-    'GGF Governance Simulator v3 — Subsidiarity as Engineering Necessity\n'
+    'Governance as Engineering Governance Simulator v3 — Subsidiarity as Engineering Necessity\n'
     'Vector state x⃗(t+1) = A·x⃗(t) + coupling(x⃗) + B·u⃗(t−τ) + d⃗(t)\n'
     f'Crisis nodes: {crisis_nodes}  |  N={N} nodes  |  τ_A={tau_A}, τ_B={tau_B}  |  '
     f'σ_A={sigma_A}, σ_B={sigma_B}',
     fontsize=10, y=0.98
 )
 
-plt.savefig('outputs/ggf-simulator-v3.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/ggf-simulator-v3-unadjusted.png', dpi=150, bbox_inches='tight')
 plt.show()
 
 print(f"\n{'Node':<8} {'Deficit A':>12} {'Deficit B':>12} {'Recovery A':>12} {'Recovery B':>12}")

@@ -1,6 +1,6 @@
 """
-GGF Governance Simulator v2
-============================
+Governance as Engineering Governance Simulator v2
+=================================================
 A state-space simulation comparing two governance architectures under crisis.
 
 Primitive grammar:
@@ -174,14 +174,14 @@ ax4.legend(fontsize=8)
 ax4.grid(True, alpha=0.25)
 
 fig.suptitle(
-    'GGF Governance Simulator v2 – Subsidiarity as Control-Theoretic Necessity\n'
+    'Governance as Engineering Governance Simulator v2 – Subsidiarity as Control-Theoretic Necessity\n'
     'x(t+1) = A·x(t) + B·u(t−τ) + d(t)   |   u(t) = K·(x_ref − y(t))   |   y(t) = x(t) + ε',
     fontsize=10, y=0.98
 )
 
-plt.savefig('outputs/ggf-simulator-v2.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/gae-simulator-v2.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("Saved to ggf-simulator-v2.png")
+print("Saved to gae-simulator-v2.png")
 print(f"\nRecovery time  A: {rt_A} steps   |   B: {rt_B} steps")
 print(f"Deficit integral A: {deviation_A:.1f}   |   B: {deviation_B:.1f}")
 print(f"Ratio (A/B): {deviation_A/max(deviation_B,1):.1f}x worse")

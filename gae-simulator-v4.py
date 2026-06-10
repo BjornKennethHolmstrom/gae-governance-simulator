@@ -1,6 +1,6 @@
 """
-GGF Governance Simulator v4 — Fractality as Stability
-=======================================================
+Governance as Engineering Governance Simulator v4 — Fractality as Stability
+===========================================================================
 Extends v3 to a multi-scale disturbance environment, demonstrating that no
 single-scale controller can stabilise a system subject to simultaneous fast,
 medium, and slow disturbances — and that fractal (nested multi-scale) control
@@ -382,12 +382,12 @@ ax_freq.text(0.02, -0.3,
 
 # ── Title ─────────────────────────────────────────────────────────────────────
 fig.suptitle(
-    'GGF Governance Simulator v4 — Fractality as Stability\n'
+    'Governance as Engineering Governance Simulator v4 — Fractality as Stability\n'
     'Multi-scale disturbance environment: fast (period 30) + medium (period 45) + slow (period 120)\n'
     'Architecture C (fractal) covers all frequency bands; A and B each leave a gap',
     fontsize=10, y=0.98
 )
 
-plt.savefig('outputs/ggf-simulator-v4.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/gae-simulator-v4.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("\nSaved to ggf-simulator-v4.png")
+print("\nSaved to gae-simulator-v4.png")

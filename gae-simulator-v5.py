@@ -1,6 +1,6 @@
 """
-GGF Governance Simulator v5 — The Observability-Democracy Connection
-=====================================================================
+Governance as Engineering Governance Simulator v5 — The Observability-Democracy Connection
+==========================================================================================
 Demonstrates that democratic systems face a formal observability constraint:
 citizen preferences become unrecoverable as signals pass through representation
 layers. Each layer introduces aggregation loss (spatial information destroyed)
@@ -427,13 +427,13 @@ print(f"Crossed at approximately K = {Ks[snr < 1.0][0] if (snr < 1.0).any() else
 
 # ── Title ─────────────────────────────────────────────────────────────────────
 fig.suptitle(
-    'GGF Governance Simulator v5 — The Observability-Democracy Connection\n'
+    'Governance as Engineering Governance Simulator v5 — The Observability-Democracy Connection\n'
     'Signal fidelity degradation through representation layers: '
     'beyond ~3 layers, citizen preferences become constitutionally unrecoverable\n'
     'All architectures have equal institutional quality; differences are structural',
     fontsize=10, y=0.98
 )
 
-plt.savefig('outputs/ggf-simulator-v5.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/gae-simulator-v5.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("\nSaved to ggf-simulator-v5.png")
+print("\nSaved to gae-simulator-v5.png")

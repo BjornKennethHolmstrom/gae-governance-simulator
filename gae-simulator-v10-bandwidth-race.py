@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-ggf-simulator-v10-bandwidth-race.py
+gae-simulator-v10-bandwidth-race.py
 ======================================
 Sim C — Transition Bandwidth Race
 Paper IX: The Political Economy of Requisite Governance

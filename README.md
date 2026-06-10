@@ -2,7 +2,7 @@ Here is the updated README, with Paper V added to the table for completeness, 
 
 ---
 
-# GGF Governance Simulator
+# Governance as Engineering Governance Simulator
 
 A series of Python simulations accompanying the **Governance as Engineering** whitepaper series. Each version applies formal tools from control theory, cybernetics, and information theory to a different structural problem in governance design.
 
@@ -32,35 +32,35 @@ Exploratory prototype. Not documented in the whitepapers.
 Introduces the core feedback loop model: a single governance node with configurable latency and signal fidelity, subject to an external disturbance. Demonstrates the stability ceiling imposed by high latency.
 
 ```bash
-python ggf-simulator-v2.py
+python gae-simulator-v2.py
 ```
 
 ### v3 — Ten‑node vector model with localized shock (Paper I)
 Extends v2 to a ten‑node spatial system. A localized shock at nodes 2 and 7 is visible to the local controller but invisible to the central controller, which sees only the aggregate signal. Demonstrates the averaging problem — the formal basis for subsidiarity.
 
 ```bash
-python ggf-simulator-v3.py
+python gae-simulator-v3.py
 ```
 
 ### v3‑unadjusted — Instability demonstration (Paper I)
 Identical to v3 but with gain set above the stability ceiling. Demonstrates the oscillatory failure mode predicted by the gain margin analysis.
 
 ```bash
-python ggf-simulator-v3-unadjusted.py
+python gae-simulator-v3-unadjusted.py
 ```
 
 ### v4 — Multi‑scale disturbance, three architectures (Paper II)
 Models a governance system facing simultaneous fast, medium, and slow disturbances. Compares three architectures: single global controller, single local controller, and fractal nested controller. Demonstrates the frequency gap theorem — no single‑scale controller covers all disturbance bands.
 
 ```bash
-python ggf-simulator-v4.py
+python gae-simulator-v4.py
 ```
 
 ### v5 — Representation chain observability, four architectures (Paper III)
 Shifts domain from stability to preference transmission. Models 60 citizen groups holding preferences across 4 dimensions, transmitted through representation chains of 1–5 layers. Computes SNR at the policy layer. Demonstrates the constitutional unobservability threshold: SNR < 1 at ≥3 layers regardless of institutional quality.
 
 ```bash
-python ggf-simulator-v5.py
+python gae-simulator-v5.py
 ```
 
 ### v6 — Commons governance and requisite variety, five architectures (Paper IV)
@@ -69,14 +69,14 @@ Models a 12‑patch renewable resource governed by five architectures over 30 ye
 Key finding: state management (Architecture B, annual survey) achieves 98.9% collapse risk — worse than open access (A, 93.6%) — because high observation latency combined with single‑dimension aggregation produces destabilising interventions. Community commons (D, 3 observation dimensions) and bioregional/indigenous governance (E, 6 dimensions including the slow ecological signal) are the only architectures that avoid near‑certain collapse.
 
 ```bash
-python ggf-simulator-v6.py
+python gae-simulator-v6.py
 ```
 
 ### v7 — Value‑function collapse, two architectures (Paper VI)
 A minimal dynamical model of the Goodhart‑Ashby synthesis. Two coupled state variables — Wealth (W) and Environment (E) — are governed by a 1D controller (GDP‑only, observes only W) and a 2D controller (wellbeing‑aware, observes W and E). The 1D controller initially drives growth, silently degrades E, and eventually collapses because its narrow value architecture destroys the very condition (a healthy environment) that sustained its target. The 2D controller moderates investment and stabilises both dimensions. The simulation is a direct instantiation of the variety gap: **G = dim(R) − dim(V) = 2 − 1 = 1 > 0**, and the excluded dimension re‑enters as catastrophe.
 
 ```bash
-python ggf-simulator-v7.py
+python gae-simulator-v7.py
 ```
 
 ---
@@ -96,12 +96,12 @@ python self-stability-simulator.py
 
 | File | Description |
 |---|---|
-| `outputs/ggf-simulator-v2.png` | Stability ceiling: latency vs. disturbance response |
-| `outputs/ggf-simulator-v3.png` | Averaging problem: local shock invisible to central controller |
-| `outputs/ggf-simulator-v4.png` | Frequency gap: three architectures across three disturbance bands |
-| `outputs/ggf-simulator-v5.png` | Observability: SNR collapse and preference tracking across four architectures |
-| `outputs/ggf-simulator-v6.png` | Commons: resource stock, requisite variety, equity, and slow variable tracking |
-| `outputs/ggf-simulator-v7.png` | Goodhart‑Ashby synthesis: 1D vs 2D value architecture, wealth‑environment collapse |
+| `outputs/gae-simulator-v2.png` | Stability ceiling: latency vs. disturbance response |
+| `outputs/gae-simulator-v3.png` | Averaging problem: local shock invisible to central controller |
+| `outputs/gae-simulator-v4.png` | Frequency gap: three architectures across three disturbance bands |
+| `outputs/gae-simulator-v5.png` | Observability: SNR collapse and preference tracking across four architectures |
+| `outputs/gae-simulator-v6.png` | Commons: resource stock, requisite variety, equity, and slow variable tracking |
+| `outputs/gae-simulator-v7.png` | Goodhart‑Ashby synthesis: 1D vs 2D value architecture, wealth‑environment collapse |
 | `outputs/self-stability-simulator.png` | Self‑variety gap: career‑only vs. multi‑dimensional personal value architecture |
 
 ---
@@ -155,7 +155,7 @@ Both controllers operate with identical total effort budgets. The difference is 
 
 ```bash
 pip install numpy matplotlib
-python ggf-simulator-v7.py   # or any other version
+python gae-simulator-v7.py   # or any other version
 ```
 
 No other dependencies. All versions tested on Python 3.10+.
