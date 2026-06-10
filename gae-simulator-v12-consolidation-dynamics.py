@@ -28,19 +28,19 @@ v12 implements the switching dynamics:
 
 TIMELINE
 --------
-t ∈ [0, 150):  normal conditions. The shared system genuinely performs better
+t ∈ [0, 250):  normal conditions. The shared system genuinely performs better
                on observable dimensions. Consolidation proceeds — driven by
                real short-term advantage, not error.
-t = 150:       regime shift. Dimension 5 (observed by NO shared adopter)
+t = 250:       regime shift. Dimension 5 (observed by NO shared adopter)
                begins persistent drift toward failure.
-t ∈ (150, 300]: the question is whether enough independent observers survived
+t ∈ (250, 400]: the question is whether enough independent observers survived
                consolidation to detect the drift and trigger the gate.
 
 This is the paper's narrative made dynamic: diversity is destroyed during
 normal times precisely because consolidation is then locally rational, and
 the cost appears only when the blind spot becomes load-bearing.
 
-FAILURE: X₅ < −8 at any time within T = 300.
+FAILURE: X₅ < −8 at any time within T = 400.
 
 OUTPUTS
 -------
@@ -58,8 +58,9 @@ os.makedirs('outputs', exist_ok=True)
 
 # ── Constants ──────────────────────────────────────────────────────────────────
 
-T          = 300
-T_SHIFT    = 150          # regime shift (later than v11: consolidation needs runway)
+T          = 400
+T_SHIFT    = 250          # regime shift — 25 evaluation cycles of normal-conditions
+                          # runway so consolidation dynamics can differentiate
 N_OBS      = 20
 DIMS       = 5
 DIM_BLIND  = 4            # dimension 5 = index 4
@@ -94,8 +95,11 @@ L0         = 0.2          # baseline liability cost of independence
 L1_DEFAULT = 0.8
 
 W_ACC      = 1.0          # weight of perceived accuracy differential in advantage
-SWITCH_K   = 2.5          # logistic steepness
-SWITCH_MID = 2.4          # advantage at which P = P_MAX/2
+SWITCH_K   = 2.35         # logistic steepness
+SWITCH_MID = 2.36         # midpoint placed BETWEEN the weak-ratchet advantage
+                          # ceiling (~1.5) and the strong-ratchet late-stage
+                          # advantage (~2.9): weak ratchets saturate at slow
+                          # switching; strong ratchets ignite the feedback loop
 P_MAX      = 0.45         # max switching probability per evaluation
 P_BACK     = 0.002        # probability of S→I per evaluation per org
                           # (atrophied infrastructure: rebuilding an independent
@@ -374,7 +378,7 @@ for sc, m in zip(SCENARIOS, mc):
     jitter = np.random.default_rng(0).normal(0, 0.08, len(cov_at_shift))
     ax_s.scatter(cov_at_shift + jitter, m['collapsed'] + jitter * 0.5,
                  color=sc['color'], alpha=0.45, s=18)
-ax_s.set_xlabel('Independent dim-5 coverage at regime shift (t=150)')
+ax_s.set_xlabel(f'Independent dim-5 coverage at regime shift (t={T_SHIFT})')
 ax_s.set_ylabel('Collapsed (1) / survived (0)')
 ax_s.set_yticks([0, 1])
 ax_s.set_title('Coverage at shift determines outcome\n'
