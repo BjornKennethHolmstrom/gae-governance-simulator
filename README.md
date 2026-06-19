@@ -20,6 +20,23 @@ All simulations are self‑contained, dependency‑light, and fully reproducible
 | VIII | [Measuring the Variety Gap](https://www.bjornkennethholmstrom.org/working-papers/measuring-the-variety-gap) | The variety gap is measurable: a composite index estimated from observable proxies, with epistemic tiering, across twenty country and organizational cases |
 | IX | [The Political Economy of Requisite Governance](https://www.bjornkennethholmstrom.org/working-papers/political-economy-of-requisite-governance)* | Transition bandwidth is the ninth structural primitive; latency asymmetry favours embedded incumbents; systems lose the capacity for self‑redesign strictly before operational collapse |
 | X | [Requisite Observer Diversity](https://www.bjornkennethholmstrom.org/working-papers/requisite-observer-diversity) | Observer diversity is the tenth structural primitive; N_eff = N/(1+(N−1)ρ) — a consolidated observer ensemble retains N nominal observers but the protection of one, and its blind spots are invisible to every instrument it possesses |
+| XI | [Reform Exhaustion](https://www.bjornkennethholmstrom.org/working-papers/reform-exhaustion) | The actuation‑side dual of constitutional unobservability: as delegation depth grows, the control energy to realise policy intent rises geometrically until the target leaves the reachable set — reform exhaustion is the rising cost curve, constitutional uncontrollability its asymptote, both independent of institutional quality |
+| XII | [Boundary Selection Deficits](https://www.bjornkennethholmstrom.org/working-papers/boundary-selection-deficits) | Boundaries are design variables; a jurisdiction whose modelled boundary omits active couplings generates unmodelled cross‑boundary feedback (an M‑Δ loop) that destabilises an internally competent controller — boundary selection is subject to a small‑gain condition |
+| XIII | [Legitimacy as Emergent Gain](https://www.bjornkennethholmstrom.org/working-papers/legitimacy-as-emergent-gain) | Legitimacy is the series' first endogenous coupling state: a gain L that multiplies actuation (B_eff = L·B) and divides observation noise (V = V₀/L), so falling L degrades steering and sensing at once — a self‑reinforcing performance‑legitimacy spiral into a low‑trust attractor |
+| XIV | [Governance as an Adaptive Controller](https://www.bjornkennethholmstrom.org/working-papers/governance-as-adaptive-controller) | Governance is a dual‑control problem — act and learn the drifting plant simultaneously; a certainty‑equivalent controller that suppresses exploration diverges as the environment drifts, so persistent excitation is structurally required |
+| XV | [The Adaptation Bottleneck](https://www.bjornkennethholmstrom.org/working-papers/adaptation-bottleneck) | The dynamic dual of Paper V: the adaptation triad (Sense, Learn, Execute) is a recursive lossy pipeline whose throughput is set by its binding stage — the slowest leg caps the whole loop's adaptive rate |
+
+---
+
+## The Self series (companion papers)
+
+The same control‑theoretic grammar applied at the individual scale: the self as a self‑governing system.
+
+| Paper | Title | Core result |
+|---|---|---|
+| Self I | [The Variety Gap in the Self](https://bjornkennethholmstrom.org/working-papers/self-variety-gap) | Personal values are observation architectures; a low‑dimensional value function destroys self‑observability and the excluded dimensions of the self re‑enter as crisis — the Goodhart–Ashby synthesis for the individual, with the self‑variety gap **G_self** |
+| Self II | [Adaptive Self‑Governance](https://bjornkennethholmstrom.org/working-papers/adaptive-self-governance) | Observer–plant identity: in a self the controller *is* the plant, so self‑observation cannot be performed without acting on the observed; self‑revision is bounded two‑sidedly (calibration below, coherence above) — constitutional self‑uncontrollability, the dual at the individual scale |
+| Self III | [The Operator](https://bjornkennethholmstrom.org/working-papers/self-operator) | Institutions inherit the perceptual limits of their operators: institutional observability of interior dimensions is upper‑bounded by the interior observational capacity of the human nodes through which they pass — *inherited unobservability*, the bridge from the Self papers back to the governance line |
 
 ---
 
@@ -124,15 +141,70 @@ Key findings: under a strong liability ratchet (L₁ = 1.5) with no protection, 
 python gae-simulator-v12-consolidation-dynamics.py
 ```
 
+### v13 — Reform exhaustion and constitutional uncontrollability (Paper XI)
+The actuation‑side dual of Paper III. Policy intent is transmitted down a delegation chain of increasing depth: each layer projects the directive onto its own repertoire and adds noise, so the control energy required to realise a target rises geometrically with depth until the target leaves the reachable set entirely. Demonstrates the two faces of one curve — reform exhaustion (each reform costlier and delivered more narrowly than the last) as the rising slope, constitutional uncontrollability as its asymptote — both independent of the quality of the people in the chain.
+
+```bash
+python gae-simulator-v13-chain-prototype.py
+```
+
+### v14 — Boundary selection deficits (Paper XII)
+Models coupled subsystems partitioned into jurisdictions. When a jurisdiction's modelled boundary omits couplings that are active in the real plant, the unmodelled cross‑boundary feedback forms an M‑Δ loop that can destabilise an internally well‑designed controller. Demonstrates that boundary selection is a design variable subject to a small‑gain stability condition: competence within the wrong boundary does not rescue the loop.
+
+```bash
+python gae-simulator-v14-boundary-mismatch.py
+```
+
+### v15 — The legitimacy trap (Paper XIII)
+Introduces legitimacy as the series' first endogenous coupling state: a gain L that multiplies the actuation channel (B_eff = L·B) and divides the observation channel's noise (V = V₀/L), so a fall in L degrades steering and sensing simultaneously. Demonstrates the performance–legitimacy spiral — a delivery gap lowers L, lowered L weakens both channels, the weakened channels widen the gap — terminating in a low‑trust attractor, with hysteresis (trust lost faster than rebuilt) and a catastrophic betrayal mechanism for borrowed legitimacy.
+
+```bash
+python gae-simulator-v15-legitimacy-trap.py
+```
+
+### v16 — Governance as an adaptive controller (Paper XIV)
+Casts governance as a dual‑control problem: the controller must act on its plant and learn the plant's drifting parameters at the same time. A certainty‑equivalent controller that suppresses exploration tracks well until the environment drifts, then diverges — exploration starvation. Demonstrates that persistent excitation is structurally required: an adaptive governance system must keep probing its own environment to retain the capacity to govern it.
+
+```bash
+python gae-simulator-v16-governance-as-adaptive-controller.py
+```
+
+### v17 — The adaptation bottleneck (Paper XV)
+The dynamic dual of Paper V. Models the adaptation triad — Sense, Learn, Execute — as a recursive lossy pipeline with a conversion efficiency at each stage. Demonstrates that the loop's overall adaptive throughput is set by its binding stage: the slowest or lowest‑efficiency leg caps the whole, so investment in the non‑binding stages yields nothing until the bottleneck is relieved.
+
+```bash
+python gae-simulator-v17-adaptation-bottleneck.py
+```
+
 ---
 
-## Companion simulation
+## Companion simulations
 
-### Self Stability Simulator (The Variety Gap in the Self)
+### Self I — Self Stability Simulator (The Variety Gap in the Self)
 Extends the variety‑gap framework from governance to self‑governance. Models a person with five coupled life dimensions (Health, Relationships, Meaning, Career, Leisure) governed by a narrow career‑only value architecture and a wider multi‑dimensional architecture. Demonstrates the same collapse pattern at the individual scale: the person who optimizes solely for career eventually loses the health and relationships that make career sustainable, while the person tracking multiple dimensions reaches a balanced equilibrium. The self‑variety gap **G_self** is computed explicitly for each architecture.
 
 ```bash
 python self-stability-simulator.py
+```
+
+### Self II — Adaptive self‑governance (five appendix simulations)
+The appendix simulations for Self II, each isolating one structural result of self‑governance at the individual scale:
+
+- `self_ii_appendix_a_correlation_tax.py` — the correlation tax across internal observers
+- `self_ii_appendix_b_actuation_chain.py` — attenuation along the internal actuation chain
+- `self_ii_appendix_c_self_legitimacy.py` — self‑legitimacy as an internal coupling gain
+- `self_ii_appendix_d_two_sided_bound.py` — the two‑sided bound on self‑revision (calibration below, coherence above)
+- `self_ii_appendix_e_observer_plant.py` — observer–plant identity: self‑observation acting on the observed
+
+```bash
+python self_ii_appendix_a_correlation_tax.py   # or b / c / d / e
+```
+
+### Self III — The Operator
+The bridge from the Self papers to the governance line. Reuses the Paper XIII legitimacy loop unchanged and adds a single operator node on the interior dimension, governed by an interior‑fidelity parameter φ. Holding a primitive‑complete, legitimacy‑safe architecture fixed, it sweeps φ downward and exhibits a threshold (φ\* ≈ 0.33 at the chosen parameters) below which the otherwise well‑formed system crosses into the low‑legitimacy attractor — demonstrating *inherited unobservability*: a perceptual deficiency at one human node, not any architectural fault, seeds the spiral. Monte Carlo: 100 seeds; the threshold's location is illustrative, its existence and φ‑dependence structural.
+
+```bash
+python self_iii_operator.py
 ```
 
 ---
@@ -160,6 +232,9 @@ python self-stability-simulator.py
 | `outputs/v12-consolidation-main.png` | Consolidation D2: n(t)/N flow, coverage, X₅, outcome scatter |
 | `outputs/v12-consolidation-sweep.png` | Consolidation D2: protected fraction × liability ratchet strength |
 | `outputs/self-stability-simulator.png` | Self‑variety gap: career‑only vs. multi‑dimensional personal value architecture |
+| `outputs/self3-phi-sweep.png` | Self III: steady‑state legitimacy vs. operator interior fidelity φ — the basin separatrix at φ* ≈ 0.33 |
+| `outputs/self3-legitimacy-trajectories.png` | Self III: legitimacy over time above vs. below the fidelity threshold |
+| `outputs/self3-interior-and-gap.png` | Self III: uncontrolled interior dimension and the standing delivery gap that feeds the spiral |
 
 ---
 
