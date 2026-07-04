@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gae-simulator-v11-epistemic-monoculture.py
+paper_x_epistemic_monoculture.py
 ============================================
 Sim D — Epistemic Monoculture Collapse
 Paper X: Requisite Observer Diversity
@@ -277,7 +277,7 @@ ax.grid(True, alpha=0.2)
 fig1.suptitle('v11 — Epistemic Monoculture Collapse: X₅ trajectory',
               fontsize=11, y=1.01)
 plt.tight_layout()
-fig1.savefig('outputs/v11-monoculture-trajectories.png', dpi=150)
+fig1.savefig('outputs/paper_x_epistemic_monoculture_trajectories.png', dpi=150)
 plt.close()
 
 
@@ -303,7 +303,7 @@ ax2.set_title('Independent-observer ensemble spread — epistemic divergence sig
 ax2.legend()
 ax2.grid(True, alpha=0.2)
 plt.tight_layout()
-fig2.savefig('outputs/v11-monoculture-spread.png', dpi=150)
+fig2.savefig('outputs/paper_x_epistemic_monoculture_spread.png', dpi=150)
 plt.close()
 
 
@@ -328,7 +328,7 @@ fig3.suptitle('Phase portrait: visible dimension vs. hidden fragility\n'
               '(Coupling: X₅ drift → X₁ drag after t=100)',
               fontsize=11)
 plt.tight_layout()
-fig3.savefig('outputs/v11-monoculture-phase.png', dpi=150)
+fig3.savefig('outputs/paper_x_epistemic_monoculture_phase.png', dpi=150)
 plt.close()
 
 
@@ -365,7 +365,7 @@ ax4.legend()
 ax4.grid(True, alpha=0.2)
 ax4.set_ylim(0, 1.05)
 plt.tight_layout()
-fig4.savefig('outputs/v11-monoculture-sweep.png', dpi=150)
+fig4.savefig('outputs/paper_x_epistemic_monoculture_sweep.png', dpi=150)
 plt.close()
 
 print("All figures saved to outputs/")

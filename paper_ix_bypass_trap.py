@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gae-simulator-v8-bypass-trap.py
+paper_ix_bypass_trap.py
 ================================
 Appendix B — Bypass-Trap Dynamics
 Paper IX: The Political Economy of Requisite Governance
@@ -33,8 +33,8 @@ Three scenarios
 
 Outputs
 -------
-  outputs/v8-bypass-trap-main.png   — MC trajectories + phase portrait
-  outputs/v8-bypass-trap-sweep.png  — drift_rate × reform_rate heatmaps
+  outputs/paper_ix_bypass_trap_main.png   — MC trajectories + phase portrait
+  outputs/paper_ix_bypass_trap_sweep.png  — drift_rate × reform_rate heatmaps
 """
 
 import numpy as np
@@ -300,9 +300,9 @@ fig.suptitle(
     'sunset-coupled bypass escapes it',
     fontsize=10, y=1.01,
 )
-plt.savefig('outputs/v8-bypass-trap-main.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_ix_bypass_trap_main.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("Saved: outputs/v8-bypass-trap-main.png")
+print("Saved: outputs/paper_ix_bypass_trap_main.png")
 
 
 # ── Figure 2: Parameter sweep (drift_rate × reform_rate) ──────────────────────
@@ -348,6 +348,6 @@ fig2.suptitle(
     fontsize=10,
 )
 plt.tight_layout()
-plt.savefig('outputs/v8-bypass-trap-sweep.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_ix_bypass_trap_sweep.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("Saved: outputs/v8-bypass-trap-sweep.png")
+print("Saved: outputs/paper_ix_bypass_trap_sweep.png")

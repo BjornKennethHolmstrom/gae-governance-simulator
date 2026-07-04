@@ -118,7 +118,7 @@ a2.legend(fontsize=8, loc="upper left")
 
 fig.suptitle("Preferential attachment: real condensation, but no fold", fontsize=11)
 fig.tight_layout(rect=[0, 0, 1, 0.96])
-png = os.path.join(OUT, "preferential_attachment_fold.png")
+png = os.path.join(OUT, "paper_xvi_preferential_attachment_fold.png")
 fig.savefig(png, dpi=140)
 
 # ---- verdict --------------------------------------------------------------

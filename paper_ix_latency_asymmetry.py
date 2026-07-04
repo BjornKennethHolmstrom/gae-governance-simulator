@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gae-simulator-v9-latency-asymmetry.py
+paper_ix_latency_asymmetry.py
 ========================================
 Sim B — Reform-Incumbent Latency Asymmetry
 Paper IX: The Political Economy of Requisite Governance
@@ -42,8 +42,8 @@ d_I ∈ [1, N]                        (higher = more incumbent coverage)
 
 Outputs
 -------
-  outputs/v9-latency-main.png    — trajectories, sweeps, findings panel
-  outputs/v9-latency-sweep.png   — full 2D phase diagram
+  outputs/paper_ix_latency_asymmetry_main.png    — trajectories, sweeps, findings panel
+  outputs/paper_ix_latency_asymmetry_sweep.png   — full 2D phase diagram
 """
 
 import numpy as np
@@ -291,9 +291,9 @@ fig.suptitle(
     f'n={N_MC} MC seeds; error bars / bands = 10th–90th pct',
     fontsize=10, y=1.01,
 )
-plt.savefig('outputs/v9-latency-main.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_ix_latency_asymmetry_main.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("Saved: outputs/v9-latency-main.png")
+print("Saved: outputs/paper_ix_latency_asymmetry_main.png")
 
 
 # ── Figure 2: Full 2D phase diagram (τ_ratio × d_I) ──────────────────────────
@@ -367,6 +367,6 @@ fig2.suptitle(
     fontsize=10,
 )
 plt.tight_layout()
-plt.savefig('outputs/v9-latency-sweep.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_ix_latency_asymmetry_sweep.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("Saved: outputs/v9-latency-sweep.png")
+print("Saved: outputs/paper_ix_latency_asymmetry_sweep.png")

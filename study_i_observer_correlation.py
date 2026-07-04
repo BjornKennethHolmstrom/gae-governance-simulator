@@ -1,5 +1,5 @@
 """
-gae-study1-observer-correlation.py  --  v0.3 (frozen with protocol S1-0.3)
+study_i_observer_correlation.py  --  v0.3 (frozen with protocol S1-0.3)
 Study 1: observer correlation in an AI ensemble (tests Paper X).
 Analysis space: log errors e_mi = ln(estimate/truth) (logit for rates).
 Ensemble = geometric mean (arithmetic mean in log space).

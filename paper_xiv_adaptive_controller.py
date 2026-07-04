@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gae-simulator-v16-governance-as-adaptive-controller.py
+paper_xiv_adaptive_controller.py
 ======================================================
 Paper XIV — Governance as an Adaptive Controller
 Simulation of the dual control problem: a governance system that must
@@ -21,12 +21,12 @@ Sweeps:
   Sweep 3 – actuation efficiency vs. performance
 
 Outputs:
-  outputs/v16-phase-diagram.png
-  outputs/v16-starvation-vs-optimal.png
-  outputs/v16-exploitation-lockin.png
-  outputs/v16-forgetting-sweep.png
+  outputs/paper_xiv_adaptive_controller_phase_diagram.png
+  outputs/paper_xiv_adaptive_controller_starvation_vs_optimal.png
+  outputs/paper_xiv_adaptive_controller_exploitation_lockin.png
+  outputs/paper_xiv_adaptive_controller_forgetting_sweep.png
   outputs/v16-actuation-sweep.png
-  outputs/v16-summary-metrics.csv
+  outputs/paper_xiv_adaptive_controller_summary_metrics.csv
 """
 
 import numpy as np
@@ -356,9 +356,9 @@ def figure_phase_diagram():
 
     fig.suptitle('Phase Diagram: Stable Learning Region (v16)', fontsize=11)
     plt.tight_layout()
-    plt.savefig('outputs/v16-phase-diagram.png', dpi=150, bbox_inches='tight')
+    plt.savefig('outputs/paper_xiv_adaptive_controller_phase_diagram.png', dpi=150, bbox_inches='tight')
     plt.show()
-    print("Saved: outputs/v16-phase-diagram.png")
+    print("Saved: outputs/paper_xiv_adaptive_controller_phase_diagram.png")
 
 
 def figure_starvation_vs_optimal():
@@ -422,9 +422,9 @@ def figure_starvation_vs_optimal():
     fig.suptitle('Exploration Starvation vs. Optimal Dual Control (v16)\n'
                  'Median ± 10–90th percentile, 100 MC seeds', fontsize=11)
     plt.tight_layout()
-    plt.savefig('outputs/v16-starvation-vs-optimal.png', dpi=150, bbox_inches='tight')
+    plt.savefig('outputs/paper_xiv_adaptive_controller_starvation_vs_optimal.png', dpi=150, bbox_inches='tight')
     plt.show()
-    print("Saved: outputs/v16-starvation-vs-optimal.png")
+    print("Saved: outputs/paper_xiv_adaptive_controller_starvation_vs_optimal.png")
 
 
 def figure_exploitation_lockin():
@@ -458,9 +458,9 @@ def figure_exploitation_lockin():
 
     fig.suptitle('Exploitation Lock‑In: Actuation vs. Learning (v16)')
     fig.tight_layout()
-    plt.savefig('outputs/v16-exploitation-lockin.png', dpi=150, bbox_inches='tight')
+    plt.savefig('outputs/paper_xiv_adaptive_controller_exploitation_lockin.png', dpi=150, bbox_inches='tight')
     plt.show()
-    print("Saved: outputs/v16-exploitation-lockin.png")
+    print("Saved: outputs/paper_xiv_adaptive_controller_exploitation_lockin.png")
 
 
 def figure_forgetting_sweep():
@@ -491,9 +491,9 @@ def figure_forgetting_sweep():
     # We'll overlay a contour at a threshold value
     ax.contour(sig_theta_vals, lam_vals, track_grid, levels=[1.0], colors='black', linewidths=2)
     plt.tight_layout()
-    plt.savefig('outputs/v16-forgetting-sweep.png', dpi=150, bbox_inches='tight')
+    plt.savefig('outputs/paper_xiv_adaptive_controller_forgetting_sweep.png', dpi=150, bbox_inches='tight')
     plt.show()
-    print("Saved: outputs/v16-forgetting-sweep.png")
+    print("Saved: outputs/paper_xiv_adaptive_controller_forgetting_sweep.png")
 
 
 def generate_summary_table():
@@ -523,11 +523,11 @@ def generate_summary_table():
             'Parameter Error (IQR)': f"{np.percentile(pe, 25):.3f} – {np.percentile(pe, 75):.3f}",
         })
 
-    with open('outputs/v16-summary-metrics.csv', 'w', newline='') as f:
+    with open('outputs/paper_xiv_adaptive_controller_summary_metrics.csv', 'w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=rows[0].keys())
         writer.writeheader()
         writer.writerows(rows)
-    print("Saved: outputs/v16-summary-metrics.csv")
+    print("Saved: outputs/paper_xiv_adaptive_controller_summary_metrics.csv")
     for row in rows:
         print(row)
 

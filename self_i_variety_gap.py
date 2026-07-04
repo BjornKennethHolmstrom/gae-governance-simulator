@@ -276,6 +276,6 @@ fig.suptitle(
     fontsize=11, y=1.02
 )
 
-plt.savefig('outputs/self-stability-simulator.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/self_i_variety_gap.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("\nSaved to outputs/self-stability-simulator.png")
+print("\nSaved to outputs/self_i_variety_gap.png")

@@ -179,9 +179,9 @@ fig.suptitle(
     fontsize=10, y=0.98
 )
 
-plt.savefig('outputs/gae-simulator-v2.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_i_single_node_feedback.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("Saved to gae-simulator-v2.png")
+print("Saved to paper_i_single_node_feedback.png")
 print(f"\nRecovery time  A: {rt_A} steps   |   B: {rt_B} steps")
 print(f"Deficit integral A: {deviation_A:.1f}   |   B: {deviation_B:.1f}")
 print(f"Ratio (A/B): {deviation_A/max(deviation_B,1):.1f}x worse")

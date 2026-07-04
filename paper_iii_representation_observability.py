@@ -434,6 +434,6 @@ fig.suptitle(
     fontsize=10, y=0.98
 )
 
-plt.savefig('outputs/gae-simulator-v5.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_iii_representation_observability.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("\nSaved to gae-simulator-v5.png")
+print("\nSaved to paper_iii_representation_observability.png")

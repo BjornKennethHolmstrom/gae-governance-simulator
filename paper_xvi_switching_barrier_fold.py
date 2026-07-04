@@ -128,7 +128,7 @@ a2.legend(fontsize=8, loc="center left")
 
 fig.suptitle("Switching-barrier lock-in: a genuine, horizon-robust fold", fontsize=11)
 fig.tight_layout(rect=[0, 0, 1, 0.96])
-png = os.path.join(OUT, "switching_barrier_fold.png")
+png = os.path.join(OUT, "paper_xvi_switching_barrier_fold.png")
 fig.savefig(png, dpi=140)
 
 # ---- report ---------------------------------------------------------------

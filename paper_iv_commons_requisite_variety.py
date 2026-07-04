@@ -526,6 +526,6 @@ fig.suptitle(
     fontsize=10, y=1.01
 )
 
-plt.savefig('outputs/gae-simulator-v6.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_iv_commons_requisite_variety.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("\nSaved to gae-simulator-v6.png")
+print("\nSaved to paper_iv_commons_requisite_variety.png")

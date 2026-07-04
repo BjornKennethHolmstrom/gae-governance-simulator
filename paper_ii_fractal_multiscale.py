@@ -388,6 +388,6 @@ fig.suptitle(
     fontsize=10, y=0.98
 )
 
-plt.savefig('outputs/gae-simulator-v4.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_ii_fractal_multiscale.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("\nSaved to gae-simulator-v4.png")
+print("\nSaved to paper_ii_fractal_multiscale.png")

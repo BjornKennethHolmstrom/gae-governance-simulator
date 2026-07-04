@@ -108,7 +108,7 @@ def sim_A():
     ax.set_title("A. Throughput is maximised at balance, not at equal effort")
     ax.legend(frameon=False, fontsize=9)
     fig.tight_layout()
-    fig.savefig(os.path.join(OUT, "xv_A_allocation.png"), dpi=130)
+    fig.savefig(os.path.join(OUT, "paper_xv_adaptation_bottleneck_A_allocation.png"), dpi=130)
     plt.close(fig)
 
     return dict(rS_star=rS_star, rL_star=rL_star, rE_star=rE_star, T_star=T_star,
@@ -171,7 +171,7 @@ def sim_B():
         ax.legend(frameon=False, fontsize=8)
     fig.suptitle("B. Each mismatch grows exactly one backlog")
     fig.tight_layout()
-    fig.savefig(os.path.join(OUT, "xv_B_backlogs.png"), dpi=130)
+    fig.savefig(os.path.join(OUT, "paper_xv_adaptation_bottleneck_B_backlogs.png"), dpi=130)
     plt.close(fig)
 
     # Structural finding: with no amplification (g=1) and no disturbance, the
@@ -222,7 +222,7 @@ def sim_C():
     ax.set_title("C. The recursion pulls throughput below the raw minimum")
     ax.legend(frameon=False, fontsize=9)
     fig.tight_layout()
-    fig.savefig(os.path.join(OUT, "xv_C_closure_delay.png"), dpi=130)
+    fig.savefig(os.path.join(OUT, "paper_xv_adaptation_bottleneck_C_closure_delay.png"), dpi=130)
     plt.close(fig)
 
     # halving point: tau where T_eff,rec = T_raw/2  =>  tau = 1/T_raw
@@ -277,7 +277,7 @@ def sim_D():
     ax2.tick_params(axis="y", labelcolor="#b04632")
     ax1.set_title("D. Effective and self-blinding: green dashboard, growing $B_R$")
     fig.tight_layout()
-    fig.savefig(os.path.join(OUT, "xv_D_self_blinding.png"), dpi=130)
+    fig.savefig(os.path.join(OUT, "paper_xv_adaptation_bottleneck_D_self_blinding.png"), dpi=130)
     plt.close(fig)
 
     return dict(final_track_err=float(track_err[-1]),

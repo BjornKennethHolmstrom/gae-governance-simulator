@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gae-simulator-v15-legitimacy-trap.py
+paper_xiii_legitimacy_trap.py
 ====================================
 Paper XIII — Legitimacy as Emergent Gain
 Simulation of the legitimacy-coupled governance control loop.
@@ -18,11 +18,11 @@ Four scenarios:
   4. Borrowed-legitimacy collapse (suppression + stochastic revelation)
 
 Outputs:
-  outputs/v15-phase-diagram.png
-  outputs/v15-trap-and-recovery.png
-  outputs/v15-borrowed-collapse.png
-  outputs/v15-collapse-heatmap.png
-  outputs/v15-asymmetry-sweep.png
+  outputs/paper_xiii_legitimacy_trap_phase_diagram.png
+  outputs/paper_xiii_legitimacy_trap_trap_and_recovery.png
+  outputs/paper_xiii_legitimacy_trap_borrowed_collapse.png
+  outputs/paper_xiii_legitimacy_trap_collapse_heatmap.png
+  outputs/paper_xiii_legitimacy_trap_asymmetry_sweep.png
 
 Corrections vs. original version
 ---------------------------------
@@ -385,9 +385,9 @@ def figure_phase_diagram():
                  'Black contour = separatrix; below/left → trap basin',
                  fontsize=11)
     plt.tight_layout()
-    plt.savefig('outputs/v15-phase-diagram.png', dpi=150, bbox_inches='tight')
+    plt.savefig('outputs/paper_xiii_legitimacy_trap_phase_diagram.png', dpi=150, bbox_inches='tight')
     plt.show()
-    print("Saved: outputs/v15-phase-diagram.png")
+    print("Saved: outputs/paper_xiii_legitimacy_trap_phase_diagram.png")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -481,9 +481,9 @@ def figure_trap_and_recovery():
                  'Median ± 10–90th percentile, 100 MC seeds',
                  fontsize=11)
     plt.tight_layout()
-    plt.savefig('outputs/v15-trap-and-recovery.png', dpi=150, bbox_inches='tight')
+    plt.savefig('outputs/paper_xiii_legitimacy_trap_trap_and_recovery.png', dpi=150, bbox_inches='tight')
     plt.show()
-    print("Saved: outputs/v15-trap-and-recovery.png")
+    print("Saved: outputs/paper_xiii_legitimacy_trap_trap_and_recovery.png")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -568,9 +568,9 @@ def figure_borrowed_collapse():
                  'Dotted lines = stochastic revelation events',
                  fontsize=11)
     plt.tight_layout()
-    plt.savefig('outputs/v15-borrowed-collapse.png', dpi=150, bbox_inches='tight')
+    plt.savefig('outputs/paper_xiii_legitimacy_trap_borrowed_collapse.png', dpi=150, bbox_inches='tight')
     plt.show()
-    print("Saved: outputs/v15-borrowed-collapse.png")
+    print("Saved: outputs/paper_xiii_legitimacy_trap_borrowed_collapse.png")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -629,9 +629,9 @@ def figure_collapse_heatmap():
                  'Longer suppression + higher γ = more severe collapse',
                  fontsize=11)
     plt.tight_layout()
-    plt.savefig('outputs/v15-collapse-heatmap.png', dpi=150, bbox_inches='tight')
+    plt.savefig('outputs/paper_xiii_legitimacy_trap_collapse_heatmap.png', dpi=150, bbox_inches='tight')
     plt.show()
-    print("Saved: outputs/v15-collapse-heatmap.png")
+    print("Saved: outputs/paper_xiii_legitimacy_trap_collapse_heatmap.png")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -671,9 +671,9 @@ def figure_asymmetry_sweep():
     ax.grid(True, alpha=0.3)
     ax.set_ylim(0, 1.05)
     plt.tight_layout()
-    plt.savefig('outputs/v15-asymmetry-sweep.png', dpi=150, bbox_inches='tight')
+    plt.savefig('outputs/paper_xiii_legitimacy_trap_asymmetry_sweep.png', dpi=150, bbox_inches='tight')
     plt.show()
-    print("Saved: outputs/v15-asymmetry-sweep.png")
+    print("Saved: outputs/paper_xiii_legitimacy_trap_asymmetry_sweep.png")
 
 
 # ══════════════════════════════════════════════════════════════════════════════

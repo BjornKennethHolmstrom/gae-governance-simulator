@@ -173,7 +173,7 @@ def main():
 
     fig.suptitle("The variance-optimal allocation is fragile to the dependence it could not measure", fontsize=11)
     fig.tight_layout(rect=[0, 0, 1, 0.95])
-    png = os.path.join(OUT, "echo_adversarial_fragility.png")
+    png = os.path.join(OUT, "paper_x_echo_adversarial_fragility.png")
     fig.savefig(png, dpi=140)
 
     print("\n--- headline: spoof (hidden common input) ---")

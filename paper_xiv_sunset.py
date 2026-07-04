@@ -56,7 +56,7 @@ Delta = log(lambda_safe / lambda_low), giving
 Note the fourth-power dependence on the confidence requirement z_alpha and
 (inversely) on the log safety margin Delta.
 
-Outputs: outputs/sunset_time_to_removal.png, outputs/sunset_tradeoff.png
+Outputs: outputs/paper_xiv_sunset_time_to_removal.png, outputs/paper_xiv_sunset_tradeoff.png
 """
 
 import os
@@ -215,7 +215,7 @@ def main():
                   "(dotted: analytic p* per drift level)")
     ax1.legend()
     fig1.tight_layout()
-    fig1.savefig("outputs/sunset_time_to_removal.png", dpi=160)
+    fig1.savefig("outputs/paper_xiv_sunset_time_to_removal.png", dpi=160)
 
     # ---------------- Scenario B ----------------
     print()
@@ -242,7 +242,7 @@ def main():
     ax2.set_title("The probe is not free: error and cost vs probe rate\n"
                   f"(σ_d = {sigma_d}, regulator genuinely necessary)")
     fig2.tight_layout()
-    fig2.savefig("outputs/sunset_tradeoff.png", dpi=160)
+    fig2.savefig("outputs/paper_xiv_sunset_tradeoff.png", dpi=160)
     print("\nFigures written to outputs/.")
 
 

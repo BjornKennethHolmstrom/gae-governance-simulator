@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gae-simulator-v10-bandwidth-race.py
+paper_ix_bandwidth_race.py
 ======================================
 Sim C — Transition Bandwidth Race
 Paper IX: The Political Economy of Requisite Governance
@@ -54,8 +54,8 @@ Two demand scenarios
 
 Outputs
 -------
-  outputs/v10-bandwidth-main.png    — G/R trajectories, phase portrait, event timing
-  outputs/v10-bandwidth-sweep.png   — regen × capture parameter sweep
+  outputs/paper_ix_bandwidth_race_main.png    — G/R trajectories, phase portrait, event timing
+  outputs/paper_ix_bandwidth_race_sweep.png   — regen × capture parameter sweep
 """
 
 import numpy as np
@@ -349,9 +349,9 @@ fig.suptitle(
     'Novel result: locked regime enters bandwidth trap (R→0, G=0.61) before operational collapse (G_crit=1.8) — 102-step unreformable window',
     fontsize=10, y=1.01,
 )
-plt.savefig('outputs/v10-bandwidth-main.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_ix_bandwidth_race_main.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("Saved: outputs/v10-bandwidth-main.png")
+print("Saved: outputs/paper_ix_bandwidth_race_main.png")
 
 
 # ── Figure 2: Parameter sweep (regen × capture) ───────────────────────────────
@@ -434,6 +434,6 @@ fig2.suptitle(
     fontsize=10,
 )
 plt.tight_layout()
-plt.savefig('outputs/v10-bandwidth-sweep.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_ix_bandwidth_race_sweep.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("Saved: outputs/v10-bandwidth-sweep.png")
+print("Saved: outputs/paper_ix_bandwidth_race_sweep.png")

@@ -1,257 +1,193 @@
-# Governance as Engineering Governance Simulator
+# Governance as Engineering — Governance Simulator
 
-A series of Python simulations accompanying the **Governance as Engineering** working paper series. Each version applies formal tools from control theory, cybernetics, and information theory to a different structural problem in governance design.
+A series of Python simulations accompanying the **Governance as Engineering** working paper series. Each simulation applies formal tools from control theory, cybernetics, and information theory to a different structural problem in governance design.
 
-All simulations are self‑contained, dependency‑light, and fully reproducible from fixed random seeds. From v8 onward, every simulation adds a Monte Carlo layer (50–200 seeds, reported as median trajectories with 10th–90th percentile bands) and at least one parameter‑sweep map demonstrating that the qualitative results are robust across regions of parameter space rather than artefacts of a single configuration.
+All simulations are self-contained, dependency-light, and fully reproducible from fixed random seeds. The later simulations (Paper IX onward) add a Monte Carlo layer (50–200 seeds, reported as median trajectories with 10th–90th percentile bands) and at least one parameter-sweep map demonstrating that the qualitative results are robust across regions of parameter space rather than artefacts of a single configuration.
+
+Files are named by the paper they support: `paper_<roman>_<slug>.py`. Papers with more than one simulation carry a distinguishing slug (e.g. Paper IX has `paper_ix_bypass_trap.py`, `paper_ix_latency_asymmetry.py`, `paper_ix_bandwidth_race.py`). The repository is intentionally flat — every script writes to a relative `outputs/` directory and expects to be run from the repository root. Figures are named to mirror their script (`<script_stem>[_<panel>].png`).
 
 ---
 
 ## The whitepaper series
 
-| Paper | Title | Core result |
-|---|---|---|
-| I | [Governance Stability Simulator](https://bjornkennethholmstrom.org/whitepapers/governance-stability-simulator) | High latency and low signal fidelity place hard mathematical ceilings on governance stability, regardless of institutional quality |
-| II | [Fractality as Stability](https://bjornkennethholmstrom.org/whitepapers/fractality-as-stability) | No single‑scale controller can stabilize a multi‑frequency disturbance environment; nested fractal architectures are the stability‑optimal solution |
-| III | [The Observability‑Democracy Connection](https://bjornkennethholmstrom.org/whitepapers/observability-democracy-connection) | Representation chains with 3+ layers are constitutionally unobservable; citizen preferences cannot survive to the policy layer regardless of institutional quality |
-| IV | [Requisite Variety and the Commons](https://bjornkennethholmstrom.org/whitepapers/requisite-variety-and-the-commons) | Commons governance is a feedback loop integrity problem; observation dimensionality — not institutional quality — determines outcomes; state management is worse than open access |
-| V | [The Coordination Failure Tax](https://bjornkennethholmstrom.org/whitepapers/coordination-failure-tax) | The four failure modes multiply rather than add; governance systems exhibiting all four are categorically incapable of the functions they claim to perform |
-| VI | [The Variety Gap](https://bjornkennethholmstrom.org/whitepapers/the-variety-gap) | What we don't optimize for, we lose the ability to see — objective functions are observation architectures, and low‑dimensional value functions produce structural collapse |
-| VII | [The Architecture of Governance Failure](https://www.bjornkennethholmstrom.org/working-papers/architecture-of-governance-failure) | Reform disappoints for structural reasons: the immune system, the bypass trap, and the legibility problem are features of the transition landscape, not contingent failures — a qualitative synthesis of fifteen country studies |
-| VIII | [Measuring the Variety Gap](https://www.bjornkennethholmstrom.org/working-papers/measuring-the-variety-gap) | The variety gap is measurable: a composite index estimated from observable proxies, with epistemic tiering, across twenty country and organizational cases |
-| IX | [The Political Economy of Requisite Governance](https://www.bjornkennethholmstrom.org/working-papers/political-economy-of-requisite-governance)* | Transition bandwidth is the ninth structural primitive; latency asymmetry favours embedded incumbents; systems lose the capacity for self‑redesign strictly before operational collapse |
-| X | [Requisite Observer Diversity](https://www.bjornkennethholmstrom.org/working-papers/requisite-observer-diversity) | Observer diversity is the tenth structural primitive; N_eff = N/(1+(N−1)ρ) — a consolidated observer ensemble retains N nominal observers but the protection of one, and its blind spots are invisible to every instrument it possesses |
-| XI | [Reform Exhaustion](https://www.bjornkennethholmstrom.org/working-papers/reform-exhaustion) | The actuation‑side dual of constitutional unobservability: as delegation depth grows, the control energy to realise policy intent rises geometrically until the target leaves the reachable set — reform exhaustion is the rising cost curve, constitutional uncontrollability its asymptote, both independent of institutional quality |
-| XII | [Boundary Selection Deficits](https://www.bjornkennethholmstrom.org/working-papers/boundary-selection-deficits) | Boundaries are design variables; a jurisdiction whose modelled boundary omits active couplings generates unmodelled cross‑boundary feedback (an M‑Δ loop) that destabilises an internally competent controller — boundary selection is subject to a small‑gain condition |
-| XIII | [Legitimacy as Emergent Gain](https://www.bjornkennethholmstrom.org/working-papers/legitimacy-as-emergent-gain) | Legitimacy is the series' first endogenous coupling state: a gain L that multiplies actuation (B_eff = L·B) and divides observation noise (V = V₀/L), so falling L degrades steering and sensing at once — a self‑reinforcing performance‑legitimacy spiral into a low‑trust attractor |
-| XIV | [Governance as an Adaptive Controller](https://www.bjornkennethholmstrom.org/working-papers/governance-as-adaptive-controller) | Governance is a dual‑control problem — act and learn the drifting plant simultaneously; a certainty‑equivalent controller that suppresses exploration diverges as the environment drifts, so persistent excitation is structurally required |
-| XV | [The Adaptation Bottleneck](https://www.bjornkennethholmstrom.org/working-papers/adaptation-bottleneck) | The dynamic dual of Paper V: the adaptation triad (Sense, Learn, Execute) is a recursive lossy pipeline whose throughput is set by its binding stage — the slowest leg caps the whole loop's adaptive rate |
+| Paper | Title | Core result | Simulator(s) |
+|---|---|---|---|
+| I | [Governance Stability Simulator](https://bjornkennethholmstrom.org/whitepapers/governance-stability-simulator) | High latency and low signal fidelity place hard mathematical ceilings on governance stability, regardless of institutional quality | `paper_i_single_node_feedback`, `paper_i_multinode_subsidiarity`, `paper_i_multinode_unadjusted` |
+| II | [Fractality as Stability](https://bjornkennethholmstrom.org/whitepapers/fractality-as-stability) | No single-scale controller can stabilize a multi-frequency disturbance environment; nested fractal architectures are the stability-optimal solution | `paper_ii_fractal_multiscale` |
+| III | [The Observability-Democracy Connection](https://bjornkennethholmstrom.org/whitepapers/observability-democracy-connection) | Representation chains with 3+ layers are constitutionally unobservable; citizen preferences cannot survive to the policy layer regardless of institutional quality | `paper_iii_representation_observability` |
+| IV | [Requisite Variety and the Commons](https://bjornkennethholmstrom.org/whitepapers/requisite-variety-and-the-commons) | Commons governance is a feedback loop integrity problem; observation dimensionality — not institutional quality — determines outcomes; state management is worse than open access | `paper_iv_commons_requisite_variety` |
+| V | [The Coordination Failure Tax](https://bjornkennethholmstrom.org/whitepapers/coordination-failure-tax) | The four failure modes multiply rather than add; governance systems exhibiting all four are categorically incapable of the functions they claim to perform | *(no simulator)* |
+| VI | [The Variety Gap](https://bjornkennethholmstrom.org/whitepapers/the-variety-gap) | What we don't optimize for, we lose the ability to see — objective functions are observation architectures, and low-dimensional value functions produce structural collapse | `paper_vi_value_function_collapse` |
+| VII | [The Architecture of Governance Failure](https://www.bjornkennethholmstrom.org/working-papers/architecture-of-governance-failure) | Reform disappoints for structural reasons: the immune system, the bypass trap, and the legibility problem are features of the transition landscape — a qualitative synthesis of fifteen country studies | *(no simulator)* |
+| VIII | [Measuring the Variety Gap](https://www.bjornkennethholmstrom.org/working-papers/measuring-the-variety-gap) | The variety gap is measurable: a composite index estimated from observable proxies, with epistemic tiering, across twenty country and organizational cases | *(no simulator)* |
+| IX | [The Political Economy of Requisite Governance](https://www.bjornkennethholmstrom.org/working-papers/political-economy-of-requisite-governance) | Transition bandwidth is the ninth structural primitive; latency asymmetry favours embedded incumbents; systems lose the capacity for self-redesign strictly before operational collapse | `paper_ix_bypass_trap`, `paper_ix_latency_asymmetry`, `paper_ix_bandwidth_race` |
+| X | [Requisite Observer Diversity](https://www.bjornkennethholmstrom.org/working-papers/requisite-observer-diversity) | Observer diversity is the tenth structural primitive; N_eff = N/(1+(N−1)ρ) — a consolidated ensemble retains N nominal observers but the protection of one, and its blind spots are invisible to every instrument it possesses | `paper_x_epistemic_monoculture`, `paper_x_consolidation_dynamics`, `paper_x_echo_adversarial_fragility` |
+| XI | [Reform Exhaustion](https://www.bjornkennethholmstrom.org/working-papers/reform-exhaustion) | The actuation-side dual of constitutional unobservability: as delegation depth grows, the control energy to realise policy intent rises geometrically until the target leaves the reachable set | `paper_xi_chain_prototype` |
+| XII | [Boundary Selection Deficits](https://www.bjornkennethholmstrom.org/working-papers/boundary-selection-deficits) | A jurisdiction whose modelled boundary omits active couplings generates unmodelled cross-boundary feedback (an M-Δ loop) that destabilises an internally competent controller — boundary selection is subject to a small-gain condition | `paper_xii_boundary_mismatch` |
+| XIII | [Legitimacy as Emergent Gain](https://www.bjornkennethholmstrom.org/working-papers/legitimacy-as-emergent-gain) | Legitimacy is the series' first endogenous coupling state: a gain L that multiplies actuation (B_eff = L·B) and divides observation noise (V = V₀/L), so falling L degrades steering and sensing at once | `paper_xiii_legitimacy_trap` |
+| XIV | [Governance as an Adaptive Controller](https://www.bjornkennethholmstrom.org/working-papers/governance-as-adaptive-controller) | Governance is a dual-control problem — act and learn the drifting plant simultaneously; a certainty-equivalent controller that suppresses exploration diverges as the environment drifts, so persistent excitation is structurally required | `paper_xiv_adaptive_controller`, `paper_xiv_sunset` |
+| XV | [The Adaptation Bottleneck](https://www.bjornkennethholmstrom.org/working-papers/adaptation-bottleneck) | The dynamic dual of Paper V: the adaptation triad (Sense, Learn, Execute) is a recursive lossy pipeline whose throughput is set by its binding stage | `paper_xv_adaptation_bottleneck` |
+| XVI | [Why Diversity Resists Formalization](https://www.bjornkennethholmstrom.org/working-papers/why-diversity-resists-formalization) | Across control theory, evolutionary biology, institutional economics, and decision theory, a quantity representing currently-unused alternatives decays under the primary objective and persists only through a source term the optimizer does not itself set; the corrected order parameter is **source-term locality** — whether that term lies inside or outside the optimizer's control set | `paper_xvi_replenishment_depletion`, `paper_xvi_replenishment_depletion_microfounded`, `paper_xvi_preferential_attachment_fold`, `paper_xvi_switching_barrier_fold`, `paper_xvi_protection_class` |
+| XVII | [The Certification Floor](https://www.bjornkennethholmstrom.org/working-papers/certification-floor) | Processing can be made arbitrarily verifiable, but certification of reality cannot be self-verifying — the regress terminates only at a trusted-unverified anchor; automating a coordination boundary relocates its irreducible certification link upstream but never removes it (a scope-bounded relocation invariant, holding for world-coupled but not self-referential coordination) | *(no simulator)* |
+| XVIII | [The Boundary Instability Principle](https://www.bjornkennethholmstrom.org/working-papers/boundary-instability) | When learning acts through channels that also carry cross-boundary influence, factorizability becomes a property of the learning trajectory rather than the architecture: generic persistent learning drives the boundary out of every fixed decomposition (Non-Factorizability Theorem), producing a reflexive boundary cycle and a Critical Learning Bandwidth that can pinch shut — and the natural prediction-error early-warning index fails, because local adaptation launders the coupling out of the monitored residuals | `paper_xviii_boundary_instability` |
 
 ---
 
 ## The Self series (companion papers)
 
-The same control‑theoretic grammar applied at the individual scale: the self as a self‑governing system.
+The same control-theoretic grammar applied at the individual scale: the self as a self-governing system.
 
-| Paper | Title | Core result |
-|---|---|---|
-| Self I | [The Variety Gap in the Self](https://bjornkennethholmstrom.org/working-papers/self-variety-gap) | Personal values are observation architectures; a low‑dimensional value function destroys self‑observability and the excluded dimensions of the self re‑enter as crisis — the Goodhart–Ashby synthesis for the individual, with the self‑variety gap **G_self** |
-| Self II | [Adaptive Self‑Governance](https://bjornkennethholmstrom.org/working-papers/adaptive-self-governance) | Observer–plant identity: in a self the controller *is* the plant, so self‑observation cannot be performed without acting on the observed; self‑revision is bounded two‑sidedly (calibration below, coherence above) — constitutional self‑uncontrollability, the dual at the individual scale |
-| Self III | [The Operator](https://bjornkennethholmstrom.org/working-papers/self-operator) | Institutions inherit the perceptual limits of their operators: institutional observability of interior dimensions is upper‑bounded by the interior observational capacity of the human nodes through which they pass — *inherited unobservability*, the bridge from the Self papers back to the governance line |
+| Paper | Title | Core result | Simulator(s) |
+|---|---|---|---|
+| Self I | [The Variety Gap in the Self](https://bjornkennethholmstrom.org/working-papers/self-variety-gap) | Personal values are observation architectures; a low-dimensional value function destroys self-observability and the excluded dimensions re-enter as crisis — the Goodhart–Ashby synthesis for the individual, with the self-variety gap **G_self** | `self_i_variety_gap` |
+| Self II | [Adaptive Self-Governance](https://bjornkennethholmstrom.org/working-papers/adaptive-self-governance) | Observer–plant identity: in a self the controller *is* the plant, so self-observation cannot be performed without acting on the observed; self-revision is bounded two-sidedly (calibration below, coherence above) | `self_ii_appendix_a`…`_e` (five appendix sims) |
+| Self III | [The Operator](https://bjornkennethholmstrom.org/working-papers/self-operator) | Institutions inherit the perceptual limits of their operators: institutional observability of interior dimensions is upper-bounded by the interior observational capacity of the human nodes through which they pass — *inherited unobservability* | `self_iii_operator`, `self_iii_formation` |
 
 ---
 
 ## Simulators
 
-### v1 — Conceptual sketch
-Exploratory prototype. Not documented in the working papers.
+### Prototype — Conceptual sketch
+`prototype_conceptual_sketch.py` — exploratory prototype predating the paper series. Not documented in the working papers; kept for provenance.
 
-### v2 — Single‑node scalar feedback (Paper I)
-Introduces the core feedback loop model: a single governance node with configurable latency and signal fidelity, subject to an external disturbance. Demonstrates the stability ceiling imposed by high latency.
+### Paper I — Governance stability
+- `paper_i_single_node_feedback.py` — the core feedback loop: a single governance node with configurable latency and signal fidelity under an external disturbance. Demonstrates the stability ceiling imposed by high latency.
+- `paper_i_multinode_subsidiarity.py` — extends the model to a ten-node spatial system. A localized shock at nodes 2 and 7 is visible to the local controller but invisible to the central controller, which sees only the aggregate. Demonstrates the averaging problem — the formal basis for subsidiarity.
+- `paper_i_multinode_unadjusted.py` — identical to the subsidiarity model but with gain set above the stability ceiling. Demonstrates the oscillatory failure mode predicted by the gain-margin analysis.
 
-```bash
-python gae-simulator-v2.py
-```
+### Paper II — Fractality as stability
+`paper_ii_fractal_multiscale.py` — a system facing simultaneous fast, medium, and slow disturbances, governed by three architectures (single global, single local, fractal nested). Demonstrates the frequency-gap theorem: no single-scale controller covers all disturbance bands.
 
-### v3 — Ten‑node vector model with localized shock (Paper I)
-Extends v2 to a ten‑node spatial system. A localized shock at nodes 2 and 7 is visible to the local controller but invisible to the central controller, which sees only the aggregate signal. Demonstrates the averaging problem — the formal basis for subsidiarity.
+### Paper III — Observability and democracy
+`paper_iii_representation_observability.py` — 60 citizen groups holding preferences across 4 dimensions, transmitted through representation chains of 1–5 layers. Computes SNR at the policy layer and demonstrates the constitutional unobservability threshold: SNR < 1 at ≥3 layers, regardless of institutional quality.
 
-```bash
-python gae-simulator-v3.py
-```
+### Paper IV — Commons and requisite variety
+`paper_iv_commons_requisite_variety.py` — a 12-patch renewable resource governed by five architectures over 30 years, subject to fast stochastic shocks, seasonal cycles, and a slow decadal carrying-capacity decline. State management (annual survey) reaches 98.9% collapse risk — worse than open access — because high observation latency combined with single-dimension aggregation produces destabilising interventions. Only the multi-dimensional architectures (community commons, bioregional/indigenous) avoid near-certain collapse.
 
-### v3‑unadjusted — Instability demonstration (Paper I)
-Identical to v3 but with gain set above the stability ceiling. Demonstrates the oscillatory failure mode predicted by the gain margin analysis.
+### Paper VI — Value-function collapse
+`paper_vi_value_function_collapse.py` — a minimal Goodhart–Ashby model. Two coupled states, Wealth (W) and Environment (E), governed by a 1D controller (GDP-only, observes W) and a 2D controller (wellbeing-aware, observes W and E). The 1D controller drives growth, silently degrades E, and collapses because its narrow value architecture destroys the condition sustaining its own target. A direct instantiation of the variety gap **G = dim(R) − dim(V) = 2 − 1 = 1 > 0**.
 
-```bash
-python gae-simulator-v3-unadjusted.py
-```
+### Paper IX — Political economy of requisite governance
+- `paper_ix_bypass_trap.py` — a dysfunctional substrate (dysfunction D) and a parallel bypass institution (load share B). Reform pressure responds only to *visible* dysfunction D·(1−B), so the bypass hides the problem it routes around. The permanent bypass is the stable low-performance attractor (highest perceived health, lowest actual ceiling); a sunset-coupled bypass escapes it. Monte Carlo: 75 seeds; sweep over drift rate × reform rate.
+- `paper_ix_latency_asymmetry.py` — two controllers on the same ten-dimensional architecture state: a reform coalition (8 dims, latency τ_R) and an incumbent (d_I dims, latency τ_I ≤ τ_R). The τ_ratio × d_I phase diagram shows a gradient boundary, not a sharp threshold — disciplining the dim(T) ≥ dim(I) condition down to a tier-2 heuristic. Monte Carlo: 50 seeds.
+- `paper_ix_bandwidth_race.py` — couples the variety gap G(t) to the reform capacity R(t) that closes it. The two-threshold structure: the locked regime enters a transition-bandwidth trap (R → 0 at G ≈ 0.61) roughly a hundred steps before operational collapse at G_crit = 1.8. Monte Carlo: 60 seeds; sweep over regeneration × capture.
 
-### v4 — Multi‑scale disturbance, three architectures (Paper II)
-Models a governance system facing simultaneous fast, medium, and slow disturbances. Compares three architectures: single global controller, single local controller, and fractal nested controller. Demonstrates the frequency gap theorem — no single‑scale controller covers all disturbance bands.
+### Paper X — Requisite observer diversity
+- `paper_x_epistemic_monoculture.py` — twenty observers monitor a five-dimensional latent state; shared-system adopters are structurally blind to dimension 5, which drifts from t=100. Monoculture fails in 95% of runs with every instrument reporting acceptable conditions, versus 2% (mixed) and 0% (diverse). Monte Carlo: 100 seeds.
+- `paper_x_consolidation_dynamics.py` — adds switching dynamics: perceived accuracy is consensus-relative (the true state is unobservable), producing an emergent positive feedback toward consolidation, plus a liability ratchet. 15% constitutional protection reduces failure to zero at every ratchet strength, and exhibits a spillover effect. Monte Carlo: 50 seeds; sweep over protected fraction × L₁ (~3–5 min).
+- `paper_x_echo_adversarial_fragility.py` — asks whether the variance-optimal observer allocation builds its own attack surface. It does — but only against dependence the optimizer could not measure (a hidden common-input factor omitted from the defender's estimated covariance). Separates a structural adversary (observable-factor and hidden-spoof moves) from an omniscient bound.
 
-```bash
-python gae-simulator-v4.py
-```
+### Paper XI — Reform exhaustion
+`paper_xi_chain_prototype.py` — the actuation-side dual of Paper III. Policy intent is transmitted down a delegation chain of increasing depth; each layer projects the directive onto its own repertoire and adds noise, so control energy rises geometrically until the target leaves the reachable set. *Illustrative prototype (v0.1), not the series-convention full simulation.*
 
-### v5 — Representation chain observability, four architectures (Paper III)
-Shifts domain from stability to preference transmission. Models 60 citizen groups holding preferences across 4 dimensions, transmitted through representation chains of 1–5 layers. Computes SNR at the policy layer. Demonstrates the constitutional unobservability threshold: SNR < 1 at ≥3 layers regardless of institutional quality.
+### Paper XII — Boundary selection deficits
+`paper_xii_boundary_mismatch.py` — coupled subsystems partitioned into jurisdictions (stochastic block model) with perfect internal controllers. Four boundary scenarios (matched, Westphalian, Sykes-Picot, adaptive). When a modelled boundary omits active couplings, the unmodelled cross-boundary feedback forms an M-Δ loop that destabilises an internally well-designed controller — boundary selection is subject to a small-gain condition.
 
-```bash
-python gae-simulator-v5.py
-```
+### Paper XIII — The legitimacy trap
+`paper_xiii_legitimacy_trap.py` — legitimacy as an endogenous gain L that multiplies actuation (B_eff = L·B) and divides observation noise (V = V₀/L). Four scenarios trace the performance–legitimacy spiral into a low-trust attractor, with hysteresis and a borrowed-legitimacy betrayal mechanism.
 
-### v6 — Commons governance and requisite variety, five architectures (Paper IV)
-Models a 12‑patch renewable resource governed by five architectures over 30 years (360 months), subject to fast stochastic shocks, seasonal cycles, and a slow decadal carrying‑capacity decline. Computes mean stock, collapse risk, and extraction inequality (Gini) per architecture.
+### Paper XIV — Governance as an adaptive controller
+- `paper_xiv_adaptive_controller.py` — the dual-control problem: regulate a two-dimensional state while learning its drifting parameters. Six scenarios (Appendix B.3) contrast optimal dual control against exploration starvation, over-exploration, forgetting-without-learning, and exploitation lock-in, plus three sweeps.
+- `paper_xiv_sunset.py` — the sunset decision as dual control (Section 6.9 / Appendix A.4). A regulator's operational record cannot separate a low threat from an effective regulator; only a protected probe channel identifies the latent rate. A Bayesian grid filter over (log λ, e) shows why a regulator's own record is incapable of certifying its necessity.
 
-Key finding: state management (Architecture B, annual survey) achieves 98.9% collapse risk — worse than open access (A, 93.6%) — because high observation latency combined with single‑dimension aggregation produces destabilising interventions. Community commons (D, 3 observation dimensions) and bioregional/indigenous governance (E, 6 dimensions including the slow ecological signal) are the only architectures that avoid near‑certain collapse.
+### Paper XV — The adaptation bottleneck
+`paper_xv_adaptation_bottleneck.py` — the adaptation triad (Sense, Learn, Execute) as a recursive lossy pipeline. Four experiments recover the allocation optimum (equalise efficiency-scaled stage rates), the three backlog regimes, and the closure-delay depression T_eff,rec = T_raw / (1 + τ·T_raw). Overall throughput is set by the binding stage.
 
-```bash
-python gae-simulator-v6.py
-```
+### Paper XVI — Why Diversity Resists Formalization
+The race between variety **replenishment** (entry of independent observers) and **depletion** (herding toward consensus), and whether it produces a hysteretic collapse of N_eff. The negative controls are load-bearing: the point is that a fold is *not* generic.
+- `paper_xvi_replenishment_depletion.py` — the base race with a posited super-linear herding term; finds a fold with hysteresis.
+- `paper_xvi_replenishment_depletion_microfounded.py` — graduation test: does the fold survive when herding is derived from a local rule (correlation neglect) rather than a hand-inserted global ρ̄? 
+- `paper_xvi_preferential_attachment_fold.py` — preferential-attachment copying; a real size-independent condensation transition (γ>1) but a single attractor — condensation, not a fold.
+- `paper_xvi_switching_barrier_fold.py` — preferential copying plus a switching barrier; locates the critical lock-in strength B\* above which a genuine, horizon-robust fold opens.
+- `paper_xvi_protection_class.py` — backs §6 (the protection class between physically-uneditable and politically-revocable); three experiments on the shared N_eff order parameter, two of them null controls.
 
-### v7 — Value‑function collapse, two architectures (Paper VI)
-A minimal dynamical model of the Goodhart‑Ashby synthesis. Two coupled state variables — Wealth (W) and Environment (E) — are governed by a 1D controller (GDP‑only, observes only W) and a 2D controller (wellbeing‑aware, observes W and E). The 1D controller initially drives growth, silently degrades E, and eventually collapses because its narrow value architecture destroys the very condition (a healthy environment) that sustained its target. The 2D controller moderates investment and stabilises both dimensions. The simulation is a direct instantiation of the variety gap: **G = dim(R) − dim(V) = 2 − 1 = 1 > 0**, and the excluded dimension re‑enters as catastrophe.
-
-```bash
-python gae-simulator-v7.py
-```
-
-### v8 — Bypass‑trap dynamics, three scenarios (Paper IX)
-Models the bypass trap: a dysfunctional governance substrate (dysfunction D) and a parallel bypass institution (load share B) that absorbs functions the substrate fails to perform. Reform pressure responds only to *visible* dysfunction D·(1−B), so the bypass hides the problem it routes around — while the substrate caps the bypass's own performance ceiling. Three scenarios: no bypass, permanent bypass, and a sunset‑coupled bypass that dismantles itself once a demonstrated‑performance threshold is crossed, returning load and reform pressure to the substrate.
-
-Key findings: the permanent bypass creates a stable low‑performance attractor — the system *looks* healthiest (highest perceived performance) while actual performance is capped lowest. A dedicated deception‑gap panel (perceived − actual performance) shows the trap's self‑concealing signature: persistent positive gap under permanent bypass, zero under no bypass, transient under sunset coupling. The sunset variant escapes the attractor and outperforms even the no‑bypass baseline — conditional on the modelling assumption that deferred reform pressure is productively redirected at sunset. Monte Carlo: 75 seeds; sweep: drift rate × reform rate, showing the sunset coupling extends the feasible‑reform region.
-
-```bash
-python gae-simulator-v8-bypass-trap.py
-```
-
-### v9 — Reform‑incumbent latency asymmetry (Paper IX)
-Two controllers act on the same ten‑dimensional architecture state: a reform coalition (observes 8 dimensions, latency τ_R) pushing toward the target, and an incumbent (observes d_I dimensions, latency τ_I ≤ τ_R) pulling back. The latency advantage is modelled as an effective counter‑mobilisation gain boost on contested dimensions — an explicit tier‑2 assumption, since in a bounded push‑pull system pure observation delay cannot shift the equilibrium.
-
-Key findings: reform wins unopposed on dimensions the incumbent does not monitor (the structural "reform floor"); success declines as incumbent coverage d_I rises and as the latency ratio falls. The full τ_ratio × d_I phase diagram shows a **gradient boundary, not a sharp threshold** — the simulation that disciplines Paper IX's dim(T) ≥ dim(I) condition down to a heuristic rather than a law. Monte Carlo: 50 seeds; sweep: 12 × 10 grid with classified outcomes (success / contested / absorbed).
-
-```bash
-python gae-simulator-v9-latency-asymmetry.py
-```
-
-### v10 — Transition bandwidth race, three parameterisations (Paper IX)
-Couples the variety gap G(t) to the reform capacity R(t) that closes it: a growing gap consumes the very capacity needed to close it, through crisis crowd‑out and incumbent capture. Compares a high‑bandwidth federation, a bypass‑heavy system, and a locked regime, under constant and accelerating (AI‑scenario) environmental demand.
-
-Key finding — the **two‑threshold structure**: the locked regime enters a *transition‑bandwidth trap* (R → 0 at G ≈ 0.61, far below the operational collapse threshold G_crit = 1.8) roughly a hundred steps before operational collapse. The system still functions but can no longer redesign itself — the paper's point of no return, reached strictly before the crisis is visible. Accelerating demand compresses the window between trap and collapse, and breaks the bypass‑heavy system that survives constant demand. Monte Carlo: 60 seeds; sweep: regeneration rate × capture rate with three‑way outcome classification (reformed / trapped / collapsed).
-
-```bash
-python gae-simulator-v10-bandwidth-race.py
-```
-
-### v11 — Epistemic monoculture collapse, Experiment D1: fixed ensembles (Paper X)
-Twenty observer organizations monitor a five‑dimensional latent state. Independent observers each cover a random three of five dimensions with decorrelated noise; shared‑system adopters cover dimensions 1–4 with higher precision and *identical* noise — and are structurally blind to dimension 5, which begins a slow persistent drift at t = 100. Three fixed populations: diverse (20 independent), mixed (5 protected independents + 15 shared), monoculture (20 shared). Detection operates on the independent ensemble's mean estimate of dimension 5; if no one observes it, the precautionary gate can never fire.
-
-Key findings: monoculture fails in 95% of runs — with every instrument reporting acceptable conditions — versus 2% (mixed) and 0% (diverse). The mixed failures are exactly the coverage lottery: (4/10)⁵ ≈ 1% chance that none of the five protected observers draws dimension 5, confirming that in the rank‑deficiency regime failure is a deterministic function of coverage. The protected‑fraction sweep is front‑loaded: failure probability falls 0.98 → 0.40 → 0.16 → 0.08 → 0.03 over the first four independent observers, effectively zero from five. Monte Carlo: 100 seeds (200 per sweep point).
-
-```bash
-python gae-simulator-v11-epistemic-monoculture.py
-```
-
-### v12 — Consolidation dynamics, Experiment D2: the monoculture attractor (Paper X)
-Extends v11 with the switching dynamics of Paper X Part III. All organizations start independent; every ten steps each unprotected organization re‑evaluates its strategy on perceived accuracy and cost. Perceived accuracy is **consensus‑relative** (the true state is unobservable), which produces an emergent positive feedback: shared‑system adopters cluster around the consensus they collectively constitute, so consolidation makes the shared system look progressively better regardless of accuracy against truth. A liability ratchet L(f) = L₀ + L₁·f raises the cost of independence as the shared fraction grows; switching back is rare (atrophied infrastructure); a protected fraction never switches. The regime shift arrives at t = 250 — after twenty‑five evaluation cycles of normal conditions during which consolidation is genuinely the locally rational choice.
-
-Key findings: under a strong liability ratchet (L₁ = 1.5) with no protection, consolidation reaches 97% before the shift and the system fails in 76% of runs; a weak ratchet (L₁ = 0.2) consolidates to only 45% and fails in 6%. **15% constitutional protection reduces failure to zero at every ratchet strength tested** — and exhibits a spillover effect: protected independents anchor the consensus, slowing consolidation among the *unprotected* as well (shared fraction at shift drops from 0.97 to 0.65). The monoculture is near‑absorbing: the surviving strong‑ratchet runs are rescued by rare post‑shift reversions to independence. Monte Carlo: 50 seeds; sweep: protected fraction × L₁ (20 seeds/cell; ~3–5 min runtime).
-
-```bash
-python gae-simulator-v12-consolidation-dynamics.py
-```
-
-### v13 — Reform exhaustion and constitutional uncontrollability (Paper XI)
-The actuation‑side dual of Paper III. Policy intent is transmitted down a delegation chain of increasing depth: each layer projects the directive onto its own repertoire and adds noise, so the control energy required to realise a target rises geometrically with depth until the target leaves the reachable set entirely. Demonstrates the two faces of one curve — reform exhaustion (each reform costlier and delivered more narrowly than the last) as the rising slope, constitutional uncontrollability as its asymptote — both independent of the quality of the people in the chain.
-
-```bash
-python gae-simulator-v13-chain-prototype.py
-```
-
-### v14 — Boundary selection deficits (Paper XII)
-Models coupled subsystems partitioned into jurisdictions. When a jurisdiction's modelled boundary omits couplings that are active in the real plant, the unmodelled cross‑boundary feedback forms an M‑Δ loop that can destabilise an internally well‑designed controller. Demonstrates that boundary selection is a design variable subject to a small‑gain stability condition: competence within the wrong boundary does not rescue the loop.
-
-```bash
-python gae-simulator-v14-boundary-mismatch.py
-```
-
-### v15 — The legitimacy trap (Paper XIII)
-Introduces legitimacy as the series' first endogenous coupling state: a gain L that multiplies the actuation channel (B_eff = L·B) and divides the observation channel's noise (V = V₀/L), so a fall in L degrades steering and sensing simultaneously. Demonstrates the performance–legitimacy spiral — a delivery gap lowers L, lowered L weakens both channels, the weakened channels widen the gap — terminating in a low‑trust attractor, with hysteresis (trust lost faster than rebuilt) and a catastrophic betrayal mechanism for borrowed legitimacy.
-
-```bash
-python gae-simulator-v15-legitimacy-trap.py
-```
-
-### v16 — Governance as an adaptive controller (Paper XIV)
-Casts governance as a dual‑control problem: the controller must act on its plant and learn the plant's drifting parameters at the same time. A certainty‑equivalent controller that suppresses exploration tracks well until the environment drifts, then diverges — exploration starvation. Demonstrates that persistent excitation is structurally required: an adaptive governance system must keep probing its own environment to retain the capacity to govern it.
-
-```bash
-python gae-simulator-v16-governance-as-adaptive-controller.py
-```
-
-### v17 — The adaptation bottleneck (Paper XV)
-The dynamic dual of Paper V. Models the adaptation triad — Sense, Learn, Execute — as a recursive lossy pipeline with a conversion efficiency at each stage. Demonstrates that the loop's overall adaptive throughput is set by its binding stage: the slowest or lowest‑efficiency leg caps the whole, so investment in the non‑binding stages yields nothing until the bottleneck is relieved.
-
-```bash
-python gae-simulator-v17-adaptation-bottleneck.py
-```
+### Paper XVIII — The Boundary Instability Principle
+`paper_xviii_boundary_instability.py` — two subsystems whose local controllers believe their jurisdictions are closed, coupled through a channel that depends on boundary clarity and an accumulated coupling stock. Local gradient-descent learning absorbs cross-boundary influence into internal gain, restoring perceived calm without removing real coupling. Tests the reflexive boundary cycle, the Boundary Dissolution Index (which fails as early warning — the coupling is laundered out of the residuals it monitors), and the Critical Learning Bandwidth as registered predictions.
 
 ---
 
-## Companion simulations
+## Companion simulations (Self series)
 
-### Self I — Self Stability Simulator (The Variety Gap in the Self)
-Extends the variety‑gap framework from governance to self‑governance. Models a person with five coupled life dimensions (Health, Relationships, Meaning, Career, Leisure) governed by a narrow career‑only value architecture and a wider multi‑dimensional architecture. Demonstrates the same collapse pattern at the individual scale: the person who optimizes solely for career eventually loses the health and relationships that make career sustainable, while the person tracking multiple dimensions reaches a balanced equilibrium. The self‑variety gap **G_self** is computed explicitly for each architecture.
+### Self I — The variety gap in the self
+`self_i_variety_gap.py` — a person with five coupled life dimensions (Health, Relationships, Meaning, Career, Leisure) under a narrow career-only architecture versus a wider multi-dimensional one. The same collapse pattern at the individual scale; the self-variety gap **G_self** is computed for each architecture.
 
-```bash
-python self-stability-simulator.py
-```
+### Self II — Adaptive self-governance (five appendix sims)
+Each isolates one structural result of self-governance:
+- `self_ii_appendix_a_correlation_tax.py` — the correlation tax across internal observers.
+- `self_ii_appendix_b_actuation_chain.py` — attenuation along the internal actuation chain (the energy law).
+- `self_ii_appendix_c_self_legitimacy.py` — self-legitimacy as an internal coupling gain (existence bifurcation, hysteresis, built-vs-borrowed, the transparency trap).
+- `self_ii_appendix_d_two_sided_bound.py` — the two-sided bound on self-revision (calibration below, coherence above).
+- `self_ii_appendix_e_observer_plant.py` — observer–plant identity: self-observation acting on the observed.
 
-### Self II — Adaptive self‑governance (five appendix simulations)
-The appendix simulations for Self II, each isolating one structural result of self‑governance at the individual scale:
+### Self III — The operator
+- `self_iii_operator.py` — the bridge back to the governance line. Reuses the Paper XIII legitimacy loop unchanged and adds one operator node on the interior dimension, governed by interior fidelity φ. Sweeping φ downward exhibits a threshold (φ\* ≈ 0.33 at the chosen parameters) below which a well-formed system crosses into the low-legitimacy attractor — *inherited unobservability*. Monte Carlo: 100 seeds.
+- `self_iii_formation.py` — the "Formation of the Observer" section. Tests whether early formation reproduces a formative source's *blindness* with higher fidelity than its *sight*, governed by the number of decorrelated alternative observers a child can reach.
 
-- `self_ii_appendix_a_correlation_tax.py` — the correlation tax across internal observers
-- `self_ii_appendix_b_actuation_chain.py` — attenuation along the internal actuation chain
-- `self_ii_appendix_c_self_legitimacy.py` — self‑legitimacy as an internal coupling gain
-- `self_ii_appendix_d_two_sided_bound.py` — the two‑sided bound on self‑revision (calibration below, coherence above)
-- `self_ii_appendix_e_observer_plant.py` — observer–plant identity: self‑observation acting on the observed
-
-```bash
-python self_ii_appendix_a_correlation_tax.py   # or b / c / d / e
-```
-
-### Self III — The Operator
-The bridge from the Self papers to the governance line. Reuses the Paper XIII legitimacy loop unchanged and adds a single operator node on the interior dimension, governed by an interior‑fidelity parameter φ. Holding a primitive‑complete, legitimacy‑safe architecture fixed, it sweeps φ downward and exhibits a threshold (φ\* ≈ 0.33 at the chosen parameters) below which the otherwise well‑formed system crosses into the low‑legitimacy attractor — demonstrating *inherited unobservability*: a perceptual deficiency at one human node, not any architectural fault, seeds the spiral. Monte Carlo: 100 seeds; the threshold's location is illustrative, its existence and φ‑dependence structural.
-
-```bash
-python self_iii_operator.py
-```
+### Study I — Observer correlation (empirical)
+`study_i_observer_correlation.py` — an empirical protocol (S1-0.3) testing Paper X on a real AI ensemble. Works in log-error space, treats shared bias as correlated error (uncentered second moments), and estimates ρ_eff with the exact identity MSE_ens/mean(MSE_m) = (1−ρ_eff)/N + ρ_eff.
 
 ---
 
 ## Simulation outputs
 
+Figures are written to `outputs/` and named to mirror their script.
+
 | File | Description |
 |---|---|
-| `outputs/gae-simulator-v2.png` | Stability ceiling: latency vs. disturbance response |
-| `outputs/gae-simulator-v3.png` | Averaging problem: local shock invisible to central controller |
-| `outputs/gae-simulator-v4.png` | Frequency gap: three architectures across three disturbance bands |
-| `outputs/gae-simulator-v5.png` | Observability: SNR collapse and preference tracking across four architectures |
-| `outputs/gae-simulator-v6.png` | Commons: resource stock, requisite variety, equity, and slow variable tracking |
-| `outputs/gae-simulator-v7.png` | Goodhart‑Ashby synthesis: 1D vs 2D value architecture, wealth‑environment collapse |
-| `outputs/v8-bypass-trap-main.png` | Bypass trap: dysfunction, performance, deception gap, phase portrait |
-| `outputs/v8-bypass-trap-sweep.png` | Bypass trap: drift rate × reform rate, three scenarios |
-| `outputs/v9-latency-main.png` | Latency asymmetry: trajectories, coverage and latency sweeps, findings |
-| `outputs/v9-latency-sweep.png` | Latency asymmetry: τ_ratio × d_I phase diagram, classified outcomes |
-| `outputs/v10-bandwidth-main.png` | Bandwidth race: G/R trajectories, two‑threshold phase portrait, collapse timing |
-| `outputs/v10-bandwidth-sweep.png` | Bandwidth race: regeneration × capture, constant vs. accelerating demand |
-| `outputs/v11-monoculture-trajectories.png` | Monoculture D1: true X₅ vs. controller estimates per scenario |
-| `outputs/v11-monoculture-spread.png` | Monoculture D1: independent‑observer ensemble spread diagnostic |
-| `outputs/v11-monoculture-phase.png` | Monoculture D1: (X₁, X₅) phase portrait — lockstep drift across the failure boundary |
-| `outputs/v11-monoculture-sweep.png` | Monoculture D1: failure probability vs. protected observer fraction |
-| `outputs/v12-consolidation-main.png` | Consolidation D2: n(t)/N flow, coverage, X₅, outcome scatter |
-| `outputs/v12-consolidation-sweep.png` | Consolidation D2: protected fraction × liability ratchet strength |
-| `outputs/self-stability-simulator.png` | Self‑variety gap: career‑only vs. multi‑dimensional personal value architecture |
-| `outputs/self3-phi-sweep.png` | Self III: steady‑state legitimacy vs. operator interior fidelity φ — the basin separatrix at φ* ≈ 0.33 |
-| `outputs/self3-legitimacy-trajectories.png` | Self III: legitimacy over time above vs. below the fidelity threshold |
-| `outputs/self3-interior-and-gap.png` | Self III: uncontrolled interior dimension and the standing delivery gap that feeds the spiral |
+| `outputs/paper_i_single_node_feedback.png` | Stability ceiling: latency vs. disturbance response |
+| `outputs/paper_i_multinode_subsidiarity.png` | Averaging problem: local shock invisible to central controller |
+| `outputs/paper_i_multinode_unadjusted.png` | Instability: gain above the stability ceiling |
+| `outputs/paper_ii_fractal_multiscale.png` | Frequency gap: three architectures across three disturbance bands |
+| `outputs/paper_iii_representation_observability.png` | Observability: SNR collapse and preference tracking across four architectures |
+| `outputs/paper_iv_commons_requisite_variety.png` | Commons: resource stock, requisite variety, equity, slow-variable tracking |
+| `outputs/paper_vi_value_function_collapse.png` | Goodhart–Ashby: 1D vs 2D value architecture, wealth–environment collapse |
+| `outputs/paper_ix_bypass_trap_main.png`, `…_sweep.png` | Bypass trap: dysfunction, performance, deception gap; drift × reform sweep |
+| `outputs/paper_ix_latency_asymmetry_main.png`, `…_sweep.png` | Latency asymmetry: trajectories; τ_ratio × d_I phase diagram |
+| `outputs/paper_ix_bandwidth_race_main.png`, `…_sweep.png` | Bandwidth race: G/R trajectories; regeneration × capture sweep |
+| `outputs/paper_x_epistemic_monoculture_{trajectories,spread,phase,sweep}.png` | Monoculture D1: trajectories, ensemble spread, phase portrait, protected-fraction sweep |
+| `outputs/paper_x_consolidation_dynamics_main.png`, `…_sweep.png` | Consolidation D2: flow/coverage/outcomes; protection × ratchet sweep |
+| `outputs/paper_x_echo_adversarial_fragility.png` | Observer allocation: attack surface against unmeasured dependence |
+| `outputs/paper_xii_boundary_mismatch_{adaptive_trajectory,adaptive_sweep,stability_loopgain}.png` | Boundary mismatch: adaptive-boundary trajectory/sweep, small-gain loop-gain |
+| `outputs/paper_xiii_legitimacy_trap_{phase_diagram,trap_and_recovery,borrowed_collapse,collapse_heatmap,asymmetry_sweep}.png` | Legitimacy trap: phase diagram, trap/recovery, borrowed collapse, heatmaps |
+| `outputs/paper_xiv_adaptive_controller_{phase_diagram,starvation_vs_optimal,exploitation_lockin,forgetting_sweep}.png`, `…_summary_metrics.csv` | Adaptive controller: phase diagram, starvation vs optimal, sweeps, metrics |
+| `outputs/paper_xiv_sunset_time_to_removal.png`, `…_tradeoff.png` | Sunset decision as dual control: time-to-removal, tradeoff |
+| `outputs/paper_xv_adaptation_bottleneck_{A_allocation,B_backlogs,C_closure_delay,D_self_blinding}.png` | Adaptation bottleneck: allocation, backlogs, closure delay, self-blinding |
+| `outputs/paper_xvi_preferential_attachment_fold.png` | Condensation transition (γ=1 vs γ>1) |
+| `outputs/paper_xvi_replenishment_depletion.png`, `…_microfounded.png` | Posited vs derived fold |
+| `outputs/paper_xvi_switching_barrier_fold.png` | Critical lock-in strength and hysteresis window |
+| `outputs/paper_xvi_protection_class.png` | Protection-class experiments |
+| `outputs/paper_xviii_boundary_instability_{A_phase_cycle,A2_regime_map,B_early_warning,C_bandwidth_slice,C2_window_map}.png` | Boundary instability: phase cycle, regime map, early warning, bandwidth slice, window map |
+| `outputs/self_i_variety_gap.png` | Self I: career-only vs multi-dimensional personal value architecture |
+| `outputs/self_iii_operator_{phi_sweep,legitimacy_trajectories,interior_and_gap}.png` | Self III: φ-sweep separatrix, legitimacy trajectories, interior gap |
+| `outputs/study_i_observer_correlation.png` | Study I: observer correlation tax demo |
+
+---
+
+## Requirements
+
+```bash
+pip install numpy matplotlib scipy
+python paper_vi_value_function_collapse.py   # or any other simulation
+```
+
+`numpy` and `matplotlib` are used everywhere; `scipy` is needed by a few simulations (e.g. `paper_xi_chain_prototype.py`, `study_i_observer_correlation.py`). All simulations tested on Python 3.10+. The Paper X consolidation sweep takes roughly 3–5 minutes; all other simulations complete in well under a minute. Run from the repository root so the relative `outputs/` path resolves.
 
 ---
 
 ## Results summary
 
-### v5 — Representation chain observability
+### Paper III — Representation chain observability
 
 | Architecture | Layers | Mean tracking error | Variance survived | SNR |
 |---|---|---|---|---|
 | A — Deep democracy | 5 | 0.160 | 0% | 0.002 |
 | B — Representative | 3 | 0.077 | 0% | 0.048 |
-| C — Semi‑direct | 2 | 0.022 | 79% | 0.254 |
+| C — Semi-direct | 2 | 0.022 | 79% | 0.254 |
 | D — Direct/participatory | 1 | 0.008 | 100% | 1.780 |
 
 Constitutional unobservability threshold: SNR < 1, crossed at approximately 2–3 layers.
 
-### v6 — Commons governance and requisite variety
+### Paper IV — Commons governance and requisite variety
 
 | Architecture | Mean stock | Collapse risk | Gini | Obs dims |
 |---|---|---|---|---|
@@ -261,28 +197,26 @@ Constitutional unobservability threshold: SNR < 1, crossed at approximately 2–
 | D — Community commons | 27.2% | 30.3% | 0.085 | 3 |
 | E — Bioregional / indigenous | 31.1% | 3.6% | 0.032 | 6 |
 
-Collapse threshold: stock below 20% of carrying capacity. Simulation: 30 years, 12 patches, 20 user groups, seed 42.
+Collapse threshold: stock below 20% of carrying capacity. 30 years, 12 patches, 20 user groups, seed 42.
 
-### v7 — Value‑function collapse (Goodhart‑Ashby synthesis)
+### Paper VI — Value-function collapse (Goodhart–Ashby)
 
 | Architecture | dim(V) | Mean W (last 50) | Collapse risk (E < 30) | Final E |
 |---|---|---|---|---|
-| 1D (GDP‑only) | 1 | ~42 | 1.0 (collapse at t≈ …) | ~ 0 |
-| 2D (Wellbeing‑aware) | 2 | ~85 | 0.0 | ~ 55 |
+| 1D (GDP-only) | 1 | ~42 | 1.0 | ~0 |
+| 2D (Wellbeing-aware) | 2 | ~85 | 0.0 | ~55 |
 
-The 1D controller destroys the environmental basis of its own target and collapses; the 2D controller achieves a stable equilibrium. Exact values depend on the disturbance draw; the quoted figures use seed 2024.
+The 1D controller destroys the environmental basis of its own target and collapses; the 2D controller reaches a stable equilibrium. Figures use seed 2024.
 
-### v8 — Bypass‑trap dynamics (75 MC seeds, medians over last 50 steps)
+### Paper IX — Bypass-trap dynamics (75 MC seeds)
 
 | Scenario | Final dysfunction D | Final performance P | Deception gap (P_perc − P_actual) |
 |---|---|---|---|
 | No bypass | 0.27 | 0.73 | 0.00 |
 | Permanent bypass | 0.37 | 0.66 | ~0.18, persistent |
-| Sunset‑coupled bypass | 0.17 | 0.83 | transient, closes at sunset |
+| Sunset-coupled bypass | 0.17 | 0.83 | transient, closes at sunset |
 
-The permanent bypass is the low‑performance attractor: highest perceived health, lowest actual ceiling. The sunset advantage over no‑bypass depends on the assumption that deferred reform pressure is productively redirected (multiplier 2.5).
-
-### v9 — Reform‑incumbent latency asymmetry (50 MC seeds, median final architecture quality A)
+### Paper IX — Reform-incumbent latency asymmetry (50 MC seeds)
 
 | Case | τ_ratio | d_I | Final A | Outcome |
 |---|---|---|---|---|
@@ -291,21 +225,21 @@ The permanent bypass is the low‑performance attractor: highest perceived healt
 | C3 | 0.75 | 5 | 0.54 | contested |
 | C4 | 1.00 | 2 | 0.70 | success |
 
-Full τ_ratio × d_I sweep: the success/absorption boundary is a gradient, not a sharp threshold — dim(T) ≥ dim(I) holds as a tier‑2 heuristic.
+The success/absorption boundary is a gradient, not a sharp threshold.
 
-### v10 — Transition bandwidth race (60 MC seeds, median event times)
+### Paper IX — Transition bandwidth race (60 MC seeds)
 
-| System | Demand | Bandwidth trap (t, G at trap) | Operational collapse (t) |
+| System | Demand | Bandwidth trap (t, G) | Operational collapse (t) |
 |---|---|---|---|
 | Federation | constant / accelerating | never | never |
-| Bypass‑heavy | constant | never | never |
-| Bypass‑heavy | accelerating | 144 (G ≈ 1.4) | 164 |
+| Bypass-heavy | constant | never | never |
+| Bypass-heavy | accelerating | 144 (G ≈ 1.4) | 164 |
 | Locked | constant | **31 (G ≈ 0.61)** | 136 |
 | Locked | accelerating | 29 | 102 |
 
-The two‑threshold structure: the locked regime loses the capacity for self‑redesign (R → 0) at G ≈ 0.61, roughly a hundred steps before operational collapse at G_crit = 1.8.
+The locked regime loses the capacity for self-redesign (R → 0) at G ≈ 0.61, roughly a hundred steps before operational collapse at G_crit = 1.8.
 
-### v11 — Epistemic monoculture, Experiment D1 (100 MC seeds)
+### Paper X — Epistemic monoculture, Experiment D1 (100 MC seeds)
 
 | Scenario | Independent / shared | Failure probability | Detection |
 |---|---|---|---|
@@ -313,9 +247,9 @@ The two‑threshold structure: the locked regime loses the capacity for self‑r
 | Mixed (protected) | 5 / 15 | 0.02 | gate fires unless coverage lottery fails (≈1%) |
 | Monoculture | 0 / 20 | 0.95 | never — dimension 5 unobserved |
 
-Protected‑fraction sweep (200 seeds/point): 0.98 → 0.40 → 0.16 → 0.08 → 0.03 → ~0 for 0–5 independent observers.
+Protected-fraction sweep (200 seeds/point): 0.98 → 0.40 → 0.16 → 0.08 → 0.03 → ~0 for 0–5 independent observers.
 
-### v12 — Consolidation dynamics, Experiment D2 (50 MC seeds)
+### Paper X — Consolidation dynamics, Experiment D2 (50 MC seeds)
 
 | Scenario | Shared fraction at shift | Failure probability |
 |---|---|---|
@@ -324,18 +258,7 @@ Protected‑fraction sweep (200 seeds/point): 0.98 → 0.40 → 0.16 → 0.08 �
 | 15% protected, strong ratchet | 0.65 | 0.00 |
 | 30% protected, strong ratchet | 0.43 | 0.00 |
 
-2D sweep (protected fraction × L₁, 20 seeds/cell): failure peaks at 0.60 in the unprotected/strong‑ratchet corner and is ≈ 0 for protection ≥ 0.15 at every ratchet strength. Note the spillover: protection slows consolidation among the unprotected as well.
-
----
-
-## Requirements
-
-```bash
-pip install numpy matplotlib
-python gae-simulator-v7.py   # or any other version
-```
-
-No other dependencies. All versions tested on Python 3.10+. The v12 parameter sweep takes roughly 3–5 minutes; all other simulations complete in well under a minute.
+2D sweep (protected fraction × L₁, 20 seeds/cell): failure peaks at 0.60 in the unprotected/strong-ratchet corner and is ≈ 0 for protection ≥ 0.15 at every ratchet strength. Protection also slows consolidation among the unprotected.
 
 ---
 

@@ -206,7 +206,7 @@ def main():
                  "(all architectural parameters fixed; only $\\phi$ varies)")
     ax.set_xlim(0, 1); ax.set_ylim(0, 1.02)
     ax.legend(frameon=False, fontsize=9, loc="center right")
-    fig.tight_layout(); fig.savefig(f"{OUTDIR}/self3-phi-sweep.png", dpi=150); plt.close(fig)
+    fig.tight_layout(); fig.savefig(f"{OUTDIR}/self_iii_operator_phi_sweep.png", dpi=150); plt.close(fig)
 
     # ------------------------------------------------------- Figure 2: L(t) trajectories
     fig, ax = plt.subplots(figsize=(7.2, 4.4))
@@ -215,7 +215,7 @@ def main():
     ax.set_xlabel("time step"); ax.set_ylabel(r"legitimacy  $L(t)$")
     ax.set_title("The operator-seeded performance–legitimacy spiral")
     ax.set_ylim(0, 1.02); ax.legend(frameon=False, fontsize=9)
-    fig.tight_layout(); fig.savefig(f"{OUTDIR}/self3-legitimacy-trajectories.png", dpi=150); plt.close(fig)
+    fig.tight_layout(); fig.savefig(f"{OUTDIR}/self_iii_operator_legitimacy_trajectories.png", dpi=150); plt.close(fig)
 
     # ------------------------------------------ Figure 3: interior state + delivery gap
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(10.2, 4.2))
@@ -227,12 +227,12 @@ def main():
     a2.plot(g_lo, color="#a53b3b", lw=1.8, label=fr"$\phi={phi_lo:.2f}$")
     a2.set_xlabel("time step"); a2.set_ylabel(r"delivery gap  $\|x_{rep}\|^2$")
     a2.set_title("Standing delivery gap feeds the spiral"); a2.legend(frameon=False, fontsize=9)
-    fig.tight_layout(); fig.savefig(f"{OUTDIR}/self3-interior-and-gap.png", dpi=150); plt.close(fig)
+    fig.tight_layout(); fig.savefig(f"{OUTDIR}/self_iii_operator_interior_and_gap.png", dpi=150); plt.close(fig)
 
     print(f"\nFigures written to {OUTDIR}/:")
-    print("  self3-phi-sweep.png")
-    print("  self3-legitimacy-trajectories.png")
-    print("  self3-interior-and-gap.png")
+    print("  self_iii_operator_phi_sweep.png")
+    print("  self_iii_operator_legitimacy_trajectories.png")
+    print("  self_iii_operator_interior_and_gap.png")
 
 if __name__ == "__main__":
     main()

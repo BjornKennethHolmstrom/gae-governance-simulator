@@ -269,7 +269,7 @@ fig.suptitle(
     fontsize=10, y=0.98
 )
 
-plt.savefig('outputs/ggf-simulator-v3-unadjusted.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_i_multinode_unadjusted.png', dpi=150, bbox_inches='tight')
 plt.show()
 
 print(f"\n{'Node':<8} {'Deficit A':>12} {'Deficit B':>12} {'Recovery A':>12} {'Recovery B':>12}")

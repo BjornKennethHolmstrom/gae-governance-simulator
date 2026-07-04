@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gae-simulator-v12-consolidation-dynamics.py
+paper_x_consolidation_dynamics.py
 =============================================
 Sim D2 — Consolidation Dynamics and the Monoculture Attractor
 Paper X: Requisite Observer Diversity — Part III §3.3 / Part VI extension
@@ -44,8 +44,8 @@ FAILURE: X₅ < −8 at any time within T = 400.
 
 OUTPUTS
 -------
-  outputs/v12-consolidation-main.png    n(t) flow, X₅, failure summary
-  outputs/v12-consolidation-sweep.png   2D sweep: protected fraction × L₁
+  outputs/paper_x_consolidation_dynamics_main.png    n(t) flow, X₅, failure summary
+  outputs/paper_x_consolidation_dynamics_sweep.png   2D sweep: protected fraction × L₁
                                         (the Figure D4 the paper describes)
 """
 
@@ -392,9 +392,9 @@ fig.suptitle(
     f'P(S→I)={P_BACK} (atrophied infrastructure) | regime shift at t={T_SHIFT}',
     fontsize=10, y=1.00,
 )
-plt.savefig('outputs/v12-consolidation-main.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_x_consolidation_dynamics_main.png', dpi=150, bbox_inches='tight')
 plt.close()
-print("Saved: outputs/v12-consolidation-main.png")
+print("Saved: outputs/paper_x_consolidation_dynamics_main.png")
 
 
 # ── Figure 2: 2D sweep — protected fraction × L1 (the paper's Figure D4) ──────
@@ -437,6 +437,6 @@ ax.set_title(
     fontsize=10, fontweight='bold',
 )
 plt.tight_layout()
-plt.savefig('outputs/v12-consolidation-sweep.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_x_consolidation_dynamics_sweep.png', dpi=150, bbox_inches='tight')
 plt.close()
-print("Saved: outputs/v12-consolidation-sweep.png")
+print("Saved: outputs/paper_x_consolidation_dynamics_sweep.png")

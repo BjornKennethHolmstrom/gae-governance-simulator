@@ -268,7 +268,7 @@ def sim_A():
     axes[0].set_title("A. One reflexive boundary cycle: calm, hidden accumulation, "
                       "collapse, recovery")
     fig.tight_layout()
-    fig.savefig(os.path.join(OUT, "xviii_A_phase_cycle.png"), dpi=130)
+    fig.savefig(os.path.join(OUT, "paper_xviii_boundary_instability_A_phase_cycle.png"), dpi=130)
     plt.close(fig)
 
     # P1 regime map over (beta, eta)
@@ -302,7 +302,7 @@ def sim_A():
     cb = fig.colorbar(pm, ticks=[0, 1, 2]); cb.ax.set_yticklabels(
         ["quiescent", "cycling", "locked NF"])
     fig.tight_layout()
-    fig.savefig(os.path.join(OUT, "xviii_A2_regime_map.png"), dpi=130)
+    fig.savefig(os.path.join(OUT, "paper_xviii_boundary_instability_A2_regime_map.png"), dpi=130)
     plt.close(fig)
 
     frac_cycling = float(np.mean(regime == 1))
@@ -433,7 +433,7 @@ def sim_B(n_seeds=10, T=6000):
     ax3.set_title("B2. Early-warning ROC")
     ax3.legend(frameon=False, fontsize=8, loc="lower right")
     fig.tight_layout()
-    fig.savefig(os.path.join(OUT, "xviii_B_early_warning.png"), dpi=130)
+    fig.savefig(os.path.join(OUT, "paper_xviii_boundary_instability_B_early_warning.png"), dpi=130)
     plt.close(fig)
 
     return dict(n_events=len(ev_wins["e"]), bests=bests)
@@ -478,7 +478,7 @@ def sim_C():
                   f"($r_{{env}}$={r_env0}, $\\nu$={nu0}): slow learning loses the plant, "
                   "fast learning dissolves the boundary")
     fig.tight_layout()
-    fig.savefig(os.path.join(OUT, "xviii_C_bandwidth_slice.png"), dpi=130)
+    fig.savefig(os.path.join(OUT, "paper_xviii_boundary_instability_C_bandwidth_slice.png"), dpi=130)
     plt.close(fig)
 
     # (ii) window width over (r_env, nu)
@@ -504,7 +504,7 @@ def sim_C():
                  "(zero-viability region above/right)")
     fig.colorbar(pm, label="fraction of $\\eta$ grid viable")
     fig.tight_layout()
-    fig.savefig(os.path.join(OUT, "xviii_C2_window_map.png"), dpi=130)
+    fig.savefig(os.path.join(OUT, "paper_xviii_boundary_instability_C2_window_map.png"), dpi=130)
     plt.close(fig)
 
     closed = width == 0

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-gae-simulator-v14-boundary-mismatch.py
+paper_xii_boundary_mismatch.py
 =====================================
 Paper XII — Boundary Selection Deficits  (corrected rewrite)
 
@@ -533,8 +533,8 @@ def main():
         'Perfect match most stable; Sykes-Picot degrades earliest',
         fontsize=11)
     plt.tight_layout()
-    fig1.savefig('outputs/v14-stability-loopgain.png', dpi=150, bbox_inches='tight')
-    print("Saved: outputs/v14-stability-loopgain.png")
+    fig1.savefig('outputs/paper_xii_boundary_mismatch_stability_loopgain.png', dpi=150, bbox_inches='tight')
+    print("Saved: outputs/paper_xii_boundary_mismatch_stability_loopgain.png")
 
     # ── Scenario (d) sweep ────────────────────────────────────────────────────
     print("\nRunning scenario (d) sweep (20 seeds per γ)...")
@@ -562,8 +562,8 @@ def main():
     ax.set_title('Adaptive renegotiation vs Westphalian baseline')
     ax.legend(); ax.grid(True, alpha=0.3)
     plt.tight_layout()
-    fig2.savefig('outputs/v14-adaptive-sweep.png', dpi=150, bbox_inches='tight')
-    print("Saved: outputs/v14-adaptive-sweep.png")
+    fig2.savefig('outputs/paper_xii_boundary_mismatch_adaptive_sweep.png', dpi=150, bbox_inches='tight')
+    print("Saved: outputs/paper_xii_boundary_mismatch_adaptive_sweep.png")
 
     # ── Scenario (d) single-run trajectory ───────────────────────────────────
     # Use γ=0.30 for trajectory: enough coupling to trigger renegotiation
@@ -605,9 +605,9 @@ def main():
         ax3b.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    fig3.savefig('outputs/v14-adaptive-trajectory.png', dpi=150,
+    fig3.savefig('outputs/paper_xii_boundary_mismatch_adaptive_trajectory.png', dpi=150,
                  bbox_inches='tight')
-    print("Saved: outputs/v14-adaptive-trajectory.png")
+    print("Saved: outputs/paper_xii_boundary_mismatch_adaptive_trajectory.png")
 
     plt.show()
     print("\nAll done.")

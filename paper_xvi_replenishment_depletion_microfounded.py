@@ -123,7 +123,7 @@ a1.text(0.13, 30, "branches diverge\n= spurious fold", fontsize=8, color="0.3", 
 a2.text(0.22, 30, "branches coincide\n= single attractor,\ncontinuous", fontsize=8, color="0.3", ha="center")
 fig.suptitle("Does the variety-gap fold survive a derived microfoundation?", fontsize=11)
 fig.tight_layout(rect=[0, 0, 1, 0.96])
-png = os.path.join(OUT, "replenishment_depletion_microfounded.png")
+png = os.path.join(OUT, "paper_xvi_replenishment_depletion_microfounded.png")
 fig.savefig(png, dpi=140)
 
 # ---- verdict --------------------------------------------------------------

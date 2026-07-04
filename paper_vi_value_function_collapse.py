@@ -217,6 +217,6 @@ fig.suptitle(
     fontsize=11, y=1.02
 )
 
-plt.savefig('outputs/appendix-c-simulation.png', dpi=150, bbox_inches='tight')
+plt.savefig('outputs/paper_vi_value_function_collapse.png', dpi=150, bbox_inches='tight')
 plt.show()
-print("\nFigure saved to outputs/appendix-c-simulation.png")
+print("\nFigure saved to outputs/paper_vi_value_function_collapse.png")

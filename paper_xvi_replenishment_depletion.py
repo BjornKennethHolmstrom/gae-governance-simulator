@@ -122,7 +122,7 @@ ax.set_ylabel("effective observers   N_eff")
 ax.set_title("Replenishment vs depletion: the variety-gap fold")
 ax.legend(fontsize=8, loc="center right")
 fig.tight_layout()
-png = os.path.join(OUT, "replenishment_depletion.png")
+png = os.path.join(OUT, "paper_xvi_replenishment_depletion.png")
 fig.savefig(png, dpi=140)
 
 # ---- report ---------------------------------------------------------------
