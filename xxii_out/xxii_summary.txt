@@ -1,0 +1,11 @@
+
+================ REGISTERED OUTCOMES (DQN branch, v2) ================
+
+GATE -- is the no-crisis baseline STATIONARY over the evaluation horizon?
+  survival        pre 100.000 [69.208, 100.000] -> late 33.333 [33.333, 77.500]   (5/20 hold >= 0.9x)
+  cooperation/step pre 0.307 [0.125, 0.416] -> late 0.000 [0.000, 0.077]  (4/20 hold >= 0.7x)
+  true-informed (late) 0.000 [0.000, 0.984]                            (6/20 clear 0.6)
+  ALL THREE: 4/20 (need 16)
+
+  GATE FAILED.  The baseline is not stationary, so nothing can be attributed to
+  the crisis.  C1-C4 WITHHELD.  This is the reported result.

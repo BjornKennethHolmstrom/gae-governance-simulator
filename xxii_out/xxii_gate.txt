@@ -1,0 +1,20 @@
+============ STAGE 1: BASELINE GATE (no_crisis only) ============
+
+GATE -- is the ADAPTIVE no-crisis baseline stationary and cooperative?
+  survival         pre 45.250 [34.958, 45.667] -> late 0.000 [0.000, 1.417]   (0/20)
+  cooperation/step pre 0.005 [0.000, 0.011] -> late 0.000 [0.000, 0.000]   (7/20)
+  true-informed (late) 0.000 [0.000, 0.000]                      (0/20)
+  certified-give rate (late) 0.000 [0.000, 0.000]   [trust in the channel]
+
+  WHO SURVIVES?  (the no-trade equilibrium is the generalist surviving alone)
+    A-specialist  :   0.0% of seeds
+    B-specialist  :   0.0% of seeds
+    generalist    :  20.0% of seeds
+    all three     :   0.0% of seeds
+
+  ALL THREE GATE CRITERIA: 0/20 (need 16)
+
+  -> STOP.  STOPPING RULE APPLIES: this is the second registered failure of the
+     adaptive learner.  Do not attempt a fourth configuration.  Report both
+     failures and fall back to Option A (scripted branch), narrowing C3 to
+     state hysteresis and amending Section 3.5.

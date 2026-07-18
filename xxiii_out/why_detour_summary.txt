@@ -1,0 +1,25 @@
+
+=============== WHY DOES THE DETOUR HELP? ===============
+
+Q1 -- is the best intermediate the SAME regardless of destination?
+  cross-destination rank correlation of C-helpfulness : -0.500 [-0.967, 0.500]
+     >= 0.5 => curriculum (destination-independent)
+     <= 0.2 => geodesic (destination-dependent)
+
+Q2 -- does the helpful intermediate lie on the behavioral PATH A->C->B?
+  rho(delta, -pathlength) : 1.000 [1.000, 1.000]   (>= 0.4 => C is on the way)
+
+Q3 -- variance in the benefit: intermediate ALONE vs the full triple
+  variance explained by intermediate C alone      :   9.7%   [curriculum]
+  variance explained by (source,dest,intermediate):  86.8%   [ceiling]
+  interaction beyond the C main effect            :  77.0%   [geodesic]
+
+  best intermediate by destination (if constant across rows => curriculum):
+    -> normal  : blur
+    -> wind    : normal
+    -> damped  : damped
+    -> blur    : normal
+
+--- REGISTERED DECISION ---
+  GEODESIC.  The benefit depends on the destination and tracks behavioral path
+  length.  Routing is genuinely path-dependent; the geodesic reading stands.

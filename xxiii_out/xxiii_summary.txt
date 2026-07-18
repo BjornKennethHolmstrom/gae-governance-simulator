@@ -1,0 +1,46 @@
+
+================ REGISTERED OUTCOMES (v2) ================
+
+TEST 1 -- Does stress RESHAPE factorization space, or only RESCALE it?
+  [Pearson]   within-regime split-half ceiling : 0.874 [0.848, 0.912]
+  [Pearson]   between-regime                   : 0.844 [0.810, 0.877]
+  [Pearson]   shortfall below ceiling          : 0.049 [-0.002, 0.095]  (bar >= 0.2)
+  [Frobenius] within-regime split-half ceiling : 0.200 [0.173, 0.217]
+  [Frobenius] between-regime shape distance    : 0.253 [0.230, 0.284]
+  [Frobenius] ratio between/within             : 1.341 [1.063, 1.481]  (bar >= 1.5)
+  scale spread (max/min mean distance)         : 1.721 [1.586, 1.824]
+  warp detected by Pearson   : 2/20
+  warp detected by Frobenius : 5/20
+  H_warp (EITHER statistic): 6/20 (bar 16) -> FAIL (null holds): stress RESCALES, it does not reshape
+  >> Two independent shape statistics, both generous to the alternative, fail to
+  >> distinguish between-regime shape from within-regime sampling noise, while the
+  >> scale of the map moves substantially.  The environment sets the SIZE of
+  >> factorization space, not its SHAPE.
+
+TEST 2 -- Is the bridge a property of the MODEL or of the REGIME?
+  tau = 1.00*eps_c [disqualified -- knife-edge]
+      regimes with any bridge structure : 6.000 [6.000, 6.000] of 6
+      zoos qualifying (>= 2 such regimes) : 20/20
+      median betweenness-rank rho        : 0.447 [0.312, 0.653]
+  tau = 1.25*eps_c [REGISTERED]
+      regimes with any bridge structure : 6.000 [6.000, 6.000] of 6
+      zoos qualifying (>= 2 such regimes) : 20/20
+      median betweenness-rank rho        : 0.653 [0.546, 0.698]
+  tau = 1.50*eps_c [secondary]
+      regimes with any bridge structure : 6.000 [5.000, 6.000] of 6
+      zoos qualifying (>= 2 such regimes) : 20/20
+      median betweenness-rank rho        : 0.548 [0.471, 0.695]
+
+  GATE: 20/20 zoos have bridge structure in >= 2 regimes at slack (bar 16)
+  H_bridge: 2/20 (bar 16) -> FAIL (null holds): betweenness rankings are regime-invariant
+
+TEST 3 -- Is there a topological transition, or only smooth drift?
+  zoos with a jump >= 2 in n_components : 1/20
+  of those, at a consistent location (+/-1)  : 1
+  mean |d n_components| per sweep step       : 0.242
+  H_transition: 1/20 (bar 16) -> FAIL (null holds): invariants drift smoothly
+
+NOTE: eps_c is the MST bottleneck edge by construction (single linkage), so any
+claim resting on eps_c varying across regimes is a claim about distance MAGNITUDE,
+not about geometry.  Test 1 is what adjudicates that, and Test 2 is why no result
+is registered at eps_c.

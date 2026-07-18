@@ -1,0 +1,43 @@
+
+================ REGISTERED OUTCOMES (v4) ================
+
+TEST 4 -- Does the geometry predict the cost of reform?
+  Spearman rho(d_beh, d_cost), directed  : 0.468 [0.439, 0.525]   (bar 0.5)
+  seeds with rho >= 0.3                : 8/10
+  rho(d_beh, SYMMETRIZED cost) -- ceiling : 0.656 [0.531, 0.804]
+  cost asymmetry |A->B vs B->A|          : 0.763 [0.722, 0.814]   [distance is symmetric; cost is not]
+  positive transfer vs CONVERGED floor    : 0.433 [0.258, 0.550]
+  reference-floor training steps          : 1400.000 [1400.000, 1400.000]  [the floor is a real floor]
+  censored transitions                    : 0.117 [0.075, 0.167]  [censoring ATTENUATES rho -> conservative]
+  H_predict -> FAIL (null): the geometry is decorative
+
+TEST 5 -- Does the ROUTE matter?  (compute-matched: real detour vs NULL detour)
+  pairs where best real detour beats the NULL : 0.833 [0.708, 0.833]
+  median gain of best-real OVER THE NULL      : 0.324 [0.154, 0.560]   (bar 0.1)
+
+  DECOMPOSITION of the advantage over the direct path:
+    compute component (null vs direct)        : 0.362 [0.264, 0.478]   <- gradient steps
+    total advantage   (best-real vs direct)   : 0.651 [0.380, 0.709]
+    => path structure = total - compute
+  H_geodesic: 10/10 seeds (bar 8) -> PASS: routing through the right intermediate beats routing through a null one, at EQUAL COMPUTE. The advantage is PATH STRUCTURE.
+
+H_route (secondary) -- is a BADLY chosen route worse than no route?
+  spread (worst - best) / null                : 1.134 [0.676, 1.624]   (bar 0.3)
+  pairs whose WORST real detour loses to null : 0.917 [0.708, 1.000]
+  H_route -> PASS: route choice matters, and a bad route is worse than no route
+
+HUBS -- which intermediates are chosen as best?
+    wind_h8            chosen best 46 times
+    blur_h8            chosen best 8 times
+    compressed_h2      chosen best 1 times
+    normal_h16         chosen best 1 times
+  If one form is repeatedly the best waypoint -- cheap to enter from anywhere,
+  cheap to leave -- then some institutional forms are WAYPOINTS, and that is a
+  governance concept the series does not currently have.
+
+NOTE (reported, not registered): the literal triangle inequality over EDGE costs
+is violated in 25-29% of triples.  We decline to register it because paying
+d(A->C) does not put you AT C -- a cost of zero means A already PERFORMS at C's
+level, not that A IS C.  Performance parity is not identity, the edges do not
+compose, and the inequality is not well-posed.  The chained test carries the
+weights through and is the honest one.

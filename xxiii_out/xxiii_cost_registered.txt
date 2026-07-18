@@ -1,0 +1,83 @@
+======== PAPER XXIII: REGISTERED TRANSITION-COST OUTCOMES ========
+
+=============== ALL SOURCES ===============
+
+H_predict -- does behavioral distance predict reform cost?
+  rho(d_beh, d_cost), directed        : 0.468 [0.439, 0.525]   (bar 0.5)
+  rho(d_beh, symmetrized cost) ceiling: n/a
+  cost asymmetry |A->B vs B->A|       : n/a   [distance is symmetric; cost is NOT]
+  censored transitions                : 0.117 [0.075, 0.167]
+  positive transfer vs converged floor: 0.433 [0.258, 0.550]
+  -> FAIL (null): the geometry is decorative
+
+H_geodesic -- does the ROUTE matter, at EQUAL COMPUTE?
+  pairs where best real detour beats the NULL : 0.833 [0.708, 0.833]
+  median gain of best-real OVER the null      : 0.324 [0.154, 0.560]   (bar 0.1)
+  compute component (null vs direct)          : 0.362 [0.264, 0.478]  <- gradient steps alone
+  total advantage   (best-real vs direct)     : 0.651 [0.380, 0.709]
+  -> 10/10 seeds. PASS: the advantage is PATH STRUCTURE, not compute
+
+H_route -- is a BADLY chosen route worse than no route?
+  (worst - best) / null                       : 1.134 [0.676, 1.624]   (bar 0.3)
+  pairs whose WORST real detour loses to null : 0.917 [0.708, 1.000]
+  -> PASS: route choice matters, and a bad route is worse than no route
+
+H_hard -- does the route matter MORE on HARDER reforms?
+  rho(direct cost, gain of best-real over null): 0.000 [-0.471, 0.086]   (bar 0.4)
+  -> FAIL (null): routes matter equally regardless of difficulty
+
+H_waypoint -- does a real waypoint SHORTEN the onward leg?
+  leg2 cut, among WINNING detours  : 0.684 [0.610, 0.856]   (bar 0.4)
+  leg2 cut, among LOSING detours   : -0.394 [-1.365, 0.066]   [expected: <= 0, i.e. leg2 grows]
+  entry cost (leg1), winners       : 1.363 [0.368, 2.963]
+  entry cost (leg1), losers        : 0.834 [0.079, 3.059]   [expected: ~0 -- a FREE entry goes nowhere]
+  best_via == cheapest to enter    : 88%   (trivial if > 80%)
+  -> FAIL: the waypoint is trivial (just the cheapest regime) or does not shorten the onward leg
+
+  waypoints chosen (among winners): wind_h8 x40, normal_h8 x2, compressed_h2 x1, velocity_aux_h8 x1
+
+
+==================================================================
+PRE-DECLARED SENSITIVITY: excluding compressed_h2 as a source.
+(hidden dim 2 -- its costs are capacity-dominated, not path-dominated)
+==================================================================
+
+=============== EXCLUDING compressed_h2 ===============
+
+H_predict -- does behavioral distance predict reform cost?
+  rho(d_beh, d_cost), directed        : 0.435 [0.378, 0.505]   (bar 0.5)
+  rho(d_beh, symmetrized cost) ceiling: n/a
+  cost asymmetry |A->B vs B->A|       : n/a   [distance is symmetric; cost is NOT]
+  censored transitions                : 0.074 [0.019, 0.176]
+  positive transfer vs converged floor: 0.463 [0.241, 0.574]
+  -> FAIL (null): the geometry is decorative
+
+H_geodesic -- does the ROUTE matter, at EQUAL COMPUTE?
+  pairs where best real detour beats the NULL : 1.000 [0.800, 1.000]
+  median gain of best-real OVER the null      : 0.406 [0.321, 0.589]   (bar 0.1)
+  compute component (null vs direct)          : 0.376 [0.350, 0.479]  <- gradient steps alone
+  total advantage   (best-real vs direct)     : 0.652 [0.577, 0.705]
+  -> 10/10 seeds. PASS: the advantage is PATH STRUCTURE, not compute
+
+H_route -- is a BADLY chosen route worse than no route?
+  (worst - best) / null                       : 1.456 [0.878, 1.947]   (bar 0.3)
+  pairs whose WORST real detour loses to null : 0.900 [0.762, 1.000]
+  -> PASS: route choice matters, and a bad route is worse than no route
+
+H_hard -- does the route matter MORE on HARDER reforms?
+  rho(direct cost, gain of best-real over null): 0.200 [-0.100, 0.300]   (bar 0.4)
+  -> FAIL (null): routes matter equally regardless of difficulty
+
+H_waypoint -- does a real waypoint SHORTEN the onward leg?
+  leg2 cut, among WINNING detours  : 0.728 [0.663, 0.928]   (bar 0.4)
+  leg2 cut, among LOSING detours   : -1.535 [-2.658, -1.223]   [expected: <= 0, i.e. leg2 grows]
+  entry cost (leg1), winners       : 1.283 [0.368, 2.962]
+  entry cost (leg1), losers        : 0.059 [0.000, 0.422]   [expected: ~0 -- a FREE entry goes nowhere]
+  best_via == cheapest to enter    : 91%   (trivial if > 80%)
+  -> FAIL: the waypoint is trivial (just the cheapest regime) or does not shorten the onward leg
+
+  waypoints chosen (among winners): wind_h8 x36, normal_h8 x2, compressed_h2 x1, velocity_aux_h8 x1
+
+
+If the two panels disagree, the disagreement IS the result: the effect is
+capacity-driven rather than path-driven, and the paper says so.
