@@ -1,0 +1,95 @@
+{
+  "master_seed": 20260718,
+  "confirmation_seed_offset": 1000000,
+  "parameters": {
+    "N_hazard": 20,
+    "h_hazard": 0.15,
+    "common_shared_bias": 0.45,
+    "independent_error_std": 0.12,
+    "liability_ratchet": 0.15,
+    "passive_retention": 0.003,
+    "competence_decay": 0.005,
+    "c_star": 0.375,
+    "mutation_rate": 0.0005,
+    "dwell_values": [
+      10,
+      30,
+      100,
+      300
+    ]
+  },
+  "phase": {
+    "classification_accuracy": 0.9821428571428571,
+    "misclassified_cells": [
+      {
+        "N": 500,
+        "h": 0.6,
+        "empirical_probability": 0.5433333333333333,
+        "empirical_phase": true,
+        "predicted_phase": false,
+        "predicted_binding_rank": 1
+      }
+    ],
+    "original": {
+      "probability": 0.014666666666666666,
+      "predicted_ladder": false,
+      "predicted_binding_rank": 1
+    },
+    "ladder": {
+      "probability": 0.9973333333333333,
+      "predicted_ladder": true,
+      "predicted_binding_rank": 10
+    },
+    "high_h": {
+      "probability": 0.21533333333333332,
+      "predicted_ladder": false,
+      "predicted_binding_rank": 1
+    }
+  },
+  "hazard": {
+    "overall_survival_mae": 0.053837022784611346,
+    "peak_median_pointwise_mae": 0.11935230883097334,
+    "peak_theta": -1.0499999999999998
+  },
+  "sweep": {
+    "conditional_mae": 0.0029166666666666785,
+    "new_population_median_mae": 0.0050000000000000044,
+    "frailty_corrected_prediction": [
+      -1.13,
+      -1.0999999999999999,
+      -1.0599999999999998,
+      -1.0399999999999998
+    ],
+    "prediction_q25": [
+      -1.13,
+      -1.0999999999999999,
+      -1.0675,
+      -1.0499999999999998
+    ],
+    "prediction_q75": [
+      -1.1199999999999999,
+      -1.0899999999999999,
+      -1.0599999999999998,
+      -1.0399999999999998
+    ],
+    "median_hazard_audit": [
+      -1.13,
+      -1.0999999999999999,
+      -1.0599999999999998,
+      -1.0399999999999998
+    ],
+    "observed": [
+      -1.13,
+      -1.0999999999999999,
+      -1.0699999999999998,
+      -1.0499999999999998
+    ]
+  },
+  "registered_checks": {
+    "P1_phase_reproduction": true,
+    "P2_anchor_regimes": true,
+    "P3_hazard_validation": true,
+    "P4_sweep_composition": true,
+    "P5_dwell_ordering": true
+  }
+}
